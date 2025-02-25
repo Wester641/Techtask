@@ -1,7 +1,7 @@
 export const Selectors = {
   unitContainer: ".VehicleDashboard_vehicle_dashboard__ZZkoI",
   addUnit: ".IconButton_open_block_cont__HN7q1",
-  threeDotsMenu: ".css-q34dxg",
+  threeDotsMenu2: ".css-q34dxg",
   containsDelete: "Delete",
   confirmDelete: "Delete",
   toastMessage: ".Toastify__toast-body",

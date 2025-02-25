@@ -30,24 +30,14 @@ export default defineConfig({
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    // launchOptions: {
-    //   slowMo: 500,
-    //   // args: ["--start-maximized"],
-    // },
-    headless: false,
-    // Сделать окно браузера хорошо видимым
+    // Используйте headless: true для CI и false для локальной разработки
+    headless: process.env.CI ? true : false,
+    // Остальные настройки остаются без изменений
     viewport: { width: 1920, height: 1080 },
-    // Делать скриншоты при ошибках
     screenshot: "on",
-    // Записывать видео
     video: "on",
-    // Записывать трейс для отладки
     trace: "on",
-    /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: "https://app.easyfleet.ai",
-
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    // trace: "on-first-retry",
   },
 
   /* Configure projects for major browsers */
