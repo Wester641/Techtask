@@ -5,6 +5,7 @@ export const Credentials = {
 
 export const URLs = {
   login: "/login",
+  dashboard: "/dashboard",
   units: "/units",
   users: "/users",
   fuelHistory: "/fuel-history",

@@ -31,9 +31,11 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     // Используйте headless: true для CI и false для локальной разработки
-    headless: process.env.CI ? true : false,
-    // Остальные настройки остаются без изменений
-    viewport: { width: 1920, height: 1080 },
+    // headless: process.env.CI ? true : false,
+    headless: false,
+    launchOptions: {
+      args: ["--start-maximized"],
+    },
     screenshot: "on",
     video: "on",
     trace: "on",
