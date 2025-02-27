@@ -12,7 +12,7 @@ test.beforeEach(async ({ page }) => {
   await page.waitForEvent("load");
 });
 
-test.only("EF-45__Units Table Functionality", async ({ page }) => {
+test("EF-45__Units Table Functionality", async ({ page }) => {
   await expect(page.locator(Selectors.searchInput)).toBeVisible();
   await page.waitForTimeout(500);
 
