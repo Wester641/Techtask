@@ -7,6 +7,7 @@ export const URLs = {
   login: "/login",
   dashboard: "/dashboard",
   units: "/units",
+  unitsFirstPage: "/units?page=1",
   users: "/users",
   fuelHistory: "/fuel-history",
   createFuelHistory: "/fuel-history/create",
