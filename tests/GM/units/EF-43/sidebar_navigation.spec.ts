@@ -13,19 +13,6 @@ test.beforeEach(async ({ page }) => {
   await page.waitForEvent("load");
 });
 
-test("EF-41__Sidebar Navigation", async ({ page }) => {
-  await expect(page.locator(Selectors.unitContainer)).toBeVisible();
-
-  await page.addStyleTag({
-    content: `
-    ${Selectors.unitContainer} {
-      background-color: lightblue; 
-      border: 1px solid #ccc;      
-    }
-  `,
-  });
-});
-
 test("EF-43__Search and Filtering Functionality", async ({ page }) => {
   const value = await page.locator(Selectors.name).nth(0).textContent();
 

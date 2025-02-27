@@ -4,6 +4,7 @@ import { Selectors, loginSelectors } from "./Selectors";
 import { URLs, Credentials } from "../../../constants/links";
 
 test.beforeEach(async ({ page }) => {
+  await page.setViewportSize({ width: 1920, height: 1080 });
   await page.goto(URLs.login);
   await page.waitForSelector(loginSelectors.email);
   await page.fill(loginSelectors.email, Credentials.email);
