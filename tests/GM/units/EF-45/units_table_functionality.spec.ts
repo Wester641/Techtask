@@ -3,7 +3,7 @@ import { Selectors, loginSelectors } from "./Selectors";
 import { URLs, Credentials } from "../../../../constants/links";
 
 test.beforeEach(async ({ page }) => {
-  await page.setViewportSize({ width: 1920, height: 1080 });
+  await page.setViewportSize({ width: 1320, height: 768 });
   await page.goto(URLs.login);
   await page.waitForSelector(loginSelectors.email);
   await page.fill(loginSelectors.email, Credentials.email);
@@ -47,7 +47,9 @@ test("EF-45__Units Table Functionality", async ({ page }) => {
   await page.locator(Selectors.archiveButton).nth(1).click();
 
   await page.locator(Selectors.firstUnit).first().click();
+  await page.waitForTimeout(4000);
   await expect(page.locator(Selectors.detailBlockInDetailPage)).toBeVisible();
+  await page.waitForTimeout(4000);
   await page.goBack();
   await expect(page).toHaveURL(URLs.units);
 
