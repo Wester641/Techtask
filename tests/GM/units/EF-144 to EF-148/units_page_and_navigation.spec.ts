@@ -106,3 +106,11 @@ test("EF-148__Verify the Comments section", async ({ page }) => {
     "Comment is Added"
   );
 });
+
+test("EF-149__Pick file", async ({ page }) => {
+  page.locator(Selectors.rowInTheTable).first().click(),
+    await page.waitForTimeout(2500);
+  await page.locator(Selectors.pickFileBtn).first();
+  await page.locator(Selectors.pickFileBtn).first().click();
+  await page.locator(Selectors.uploadButtons).first().click();
+});
