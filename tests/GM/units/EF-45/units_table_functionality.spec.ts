@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }) => {
   await page.fill(loginSelectors.email, Credentials.email);
   await page.fill(loginSelectors.password, Credentials.password);
   await page.click(loginSelectors.submitButton);
-  await page.waitForEvent("load");
+    await page.waitForURL(URLs.units, { timeout: 10000 });
 });
 
 test("EF-45__Units Table Functionality", async ({ page }) => {
