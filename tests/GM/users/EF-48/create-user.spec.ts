@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { Selectors, time, loginSelectors } from "./Selectors";
 
-import { URLs, Credentials } from "../../../constants/links";
+import { URLs, Credentials } from "../../../../constants/links";
 
 test.beforeEach(async ({ page }) => {
   await page.setViewportSize({ width: 1920, height: 1080 });
@@ -10,7 +10,7 @@ test.beforeEach(async ({ page }) => {
   await page.fill(loginSelectors.email, Credentials.email);
   await page.fill(loginSelectors.password, Credentials.password);
   await page.click(loginSelectors.submitButton);
-  await expect(page.locator(Selectors.unitContainer)).toBeVisible();
+  await page.waitForURL(URLs.users, { timeout: 10000 });
 });
 
 // CREATE USER
