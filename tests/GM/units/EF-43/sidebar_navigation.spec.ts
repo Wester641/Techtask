@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { Selectors, loginSelectors, time } from "./Selectors";
 
-import { URLs, Credentials } from "../../../../constants/links";
+import { URLs, Credentials, timeout } from "../../../../constants/links";
 
 test.beforeEach(async ({ page }) => {
   await page.setViewportSize({ width: 1920, height: 1080 });
@@ -10,7 +10,7 @@ test.beforeEach(async ({ page }) => {
   await page.fill(loginSelectors.email, Credentials.email);
   await page.fill(loginSelectors.password, Credentials.password);
   await page.click(loginSelectors.submitButton);
-    await page.waitForURL(URLs.units, { timeout: 10000 });
+  await page.waitForURL(URLs.units, timeout);
 });
 
 test("EF-43__Search and Filtering Functionality", async ({ page }) => {
