@@ -3,7 +3,7 @@ import { Selectors, loginSelectors } from "./Selectors";
 import { URLs, Credentials } from "../../../../constants/links";
 
 test.beforeEach(async ({ page }) => {
-  await page.setViewportSize({ width: 1366, height: 768 });
+  await page.setViewportSize({ width: 1920, height: 1080 });
   await page.goto(URLs.login);
   await page.waitForSelector(loginSelectors.email);
   await page.fill(loginSelectors.email, Credentials.email);
@@ -12,7 +12,7 @@ test.beforeEach(async ({ page }) => {
   await page.waitForURL(URLs.units, { timeout: 30000 });
 });
 
-test("EF-49__Update User Tabs Functionality", async ({ page }) => {
+test("EF-49__User Tabs Functionality", async ({ page }) => {
   await expect(page.locator(Selectors.searchInput)).toBeVisible();
   await page.waitForTimeout(500);
   //Go to users page
