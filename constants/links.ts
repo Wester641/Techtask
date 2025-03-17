@@ -39,6 +39,7 @@ export const URLs = {
   vendorsPage: "/vendor",
   addParts: "/parts/create",
   partsPage: "/parts",
+  onboarding_form: "/onboarding-form",
 
   api: {
     login: "/api/v1/accounts/login/",
