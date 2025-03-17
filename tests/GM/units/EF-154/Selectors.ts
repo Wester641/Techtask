@@ -6,8 +6,3 @@ export const Selectors = {
   pageTitle: "[class*=current_text__26lCj]",
   detailsBlock: ".VehicleDetail_overview__details__xzKjc",
 };
-export const loginSelectors = {
-  email: 'input[type="text"]',
-  password: 'input[type="password"]',
-  submitButton: 'button[type="submit"]',
-};

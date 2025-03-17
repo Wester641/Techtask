@@ -1,7 +1,7 @@
-import { test, expect } from "@playwright/test";
-import { Selectors, loginSelectors, time } from "./Selectors";
+import { test } from "@playwright/test";
+import { Selectors } from "./Selectors";
 
-import { URLs, Credentials } from "../../../../constants/links";
+import { URLs } from "../../../../constants/links";
 
 test("EF-44__Units Statistics Display", async ({ page }) => {
   await page.goto(URLs.units);

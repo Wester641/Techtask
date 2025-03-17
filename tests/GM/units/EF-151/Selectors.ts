@@ -6,8 +6,3 @@ export const Selectors = {
   issueTab: "[class*='css-1q2h7u5']",
   issueForm: ".IssueForm_form__0E4Uu",
 };
-export const loginSelectors = {
-  email: 'input[type="text"]',
-  password: 'input[type="password"]',
-  submitButton: 'button[type="submit"]',
-};

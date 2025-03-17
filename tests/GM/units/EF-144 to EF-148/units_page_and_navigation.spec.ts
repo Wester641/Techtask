@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
-import { loginSelectors, Selectors, today } from "./Selectors";
-import { URLs, Credentials } from "../../../../constants/links";
+import { Selectors, today } from "./Selectors";
+import { URLs } from "../../../../constants/links";
 import {
   checkBlock,
   checkBlockBGtransparent,

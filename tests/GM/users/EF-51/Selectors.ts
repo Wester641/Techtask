@@ -14,11 +14,6 @@ export const Selectors = {
   toastMsg: ".Toastify__toast-body",
   deleteToastMsg: "[class*='Toastify__toast-icon']",
 };
-export const loginSelectors = {
-  email: 'input[type="text"]',
-  password: 'input[type="password"]',
-  submitButton: 'button[type="submit"]',
-};
 
 export const today = new Date().toDateString();
 export const time = new Date().toLocaleTimeString();

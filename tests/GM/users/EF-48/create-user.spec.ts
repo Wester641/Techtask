@@ -1,12 +1,13 @@
-import { test, expect } from "@playwright/test";
-import { Selectors, time, loginSelectors } from "./Selectors";
+import { test } from "@playwright/test";
+import { Selectors, time } from "./Selectors";
 
-import { URLs, Credentials } from "../../../../constants/links";
+import { URLs } from "../../../../constants/links";
 
 // CREATE USER
 
 test("create user test", async ({ page }) => {
   await page.goto(URLs.users + "/create");
+  await page.setViewportSize({ width: 1920, height: 1080 });
 
   await page
     .locator(Selectors.input)

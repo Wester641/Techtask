@@ -5,11 +5,6 @@ export const Selectors = {
   submitButton: 'button[type="submit"]',
   adminRole: ".UserAccessForm_block__i1ooN",
 };
-export const loginSelectors = {
-  email: 'input[type="text"]',
-  password: 'input[type="password"]',
-  submitButton: 'button[type="submit"]',
-};
 
 export const today = new Date().toDateString();
 export const time = new Date().toLocaleTimeString();

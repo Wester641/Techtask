@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
-import { Selectors, loginSelectors } from "./Selectors";
-import { URLs, Credentials } from "../../../../constants/links";
+import { Selectors } from "./Selectors";
+import { URLs } from "../../../../constants/links";
 
 test("EF-151__issues_display", async ({ page }) => {
   await page.goto(URLs.units);
