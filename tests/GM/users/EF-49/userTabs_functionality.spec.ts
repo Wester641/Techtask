@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { Selectors } from "./Selectors";
 import { URLs, screenSize } from "../../../../constants/links";
 
-test.only("EF-49__User Tabs Functionality", async ({ page }) => {
+test("EF-49__User Tabs Functionality", async ({ page }) => {
   await page.goto(URLs.users);
   await page.setViewportSize(screenSize);
 
