@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
-import { Selectors, loginSelectors, time } from "./Selectors";
+import { Selectors } from "./Selectors";
 
-import { URLs, Credentials } from "../../../../constants/links";
+import { URLs } from "../../../../constants/links";
 
 test("EF-41__Sidebar Navigation", async ({ page }) => {
   await page.goto(URLs.units);

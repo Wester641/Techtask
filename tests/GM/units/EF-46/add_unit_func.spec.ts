@@ -3,15 +3,15 @@ import {
   Selectors,
   stateRegistration,
   time,
-  loginSelectors,
   trimTrucks,
   truckColors,
   truckMsrpRanges,
 } from "./Selectors";
 
-import { URLs, Credentials } from "../../../../constants/links";
+import { URLs } from "../../../../constants/links";
 
 test("EF-46__Add Unit Functionality", async ({ page }) => {
+  await page.setViewportSize({ width: 1920, height: 1080 });
   await page.goto(URLs.createUnit);
 
   await page

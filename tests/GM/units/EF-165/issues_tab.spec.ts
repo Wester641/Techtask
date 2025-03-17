@@ -1,12 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { Selectors } from "./Selectors";
-import {
-  URLs,
-  Credentials,
-  screenSize,
-  timeout,
-  loginSelectors,
-} from "../../../../constants/links";
+import { URLs, timeout } from "../../../../constants/links";
 
 test("EF-165__Issues Tab - Entries Verification", async ({ page }) => {
   await page.goto(URLs.login);

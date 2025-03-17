@@ -1,7 +1,7 @@
 import { test } from "@playwright/test";
-import { Selectors, loginSelectors } from "./Selectors";
+import { Selectors,  } from "./Selectors";
 
-import { URLs, Credentials } from "../../../constants/links";
+import { URLs } from "../../../constants/links";
 
 test("dashboard testing from 135 to 143 test cases.", async ({ page }) => {
   await page.setViewportSize({ width: 1920, height: 1080 });

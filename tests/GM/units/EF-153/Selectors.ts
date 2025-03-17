@@ -6,8 +6,3 @@ export const Selectors = {
   detailsBlock: ".VehicleDetail_overview__details__xzKjc",
   updateUnitForm: ".DetailsForm_content__vNyvd",
 };
-export const loginSelectors = {
-  email: 'input[type="text"]',
-  password: 'input[type="password"]',
-  submitButton: 'button[type="submit"]',
-};

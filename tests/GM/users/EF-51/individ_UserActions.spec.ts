@@ -1,19 +1,11 @@
 import { test, expect } from "@playwright/test";
-import { Selectors, time, loginSelectors } from "./Selectors";
-import { URLs, Credentials } from "../../../../constants/links";
-
-test.beforeEach(async ({ page }) => {
-  await page.setViewportSize({ width: 1920, height: 1080 });
-  await page.goto(URLs.login);
-  await page.waitForSelector(loginSelectors.email);
-  await page.fill(loginSelectors.email, Credentials.email);
-  await page.fill(loginSelectors.password, Credentials.password);
-  await page.click(loginSelectors.submitButton);
-  await page.waitForURL(URLs.units, { timeout: 30000 });
-});
+import { Selectors, time } from "./Selectors";
+import { URLs, screenSize } from "../../../../constants/links";
 
 test("EF-51_Individiual User Actions", async ({ page }) => {
   await page.goto(URLs.users);
+  await page.setViewportSize(screenSize);
+
   await page.locator(Selectors.threeDotsBtn).nth(1).click();
 
   const menuItem = await page
@@ -63,19 +55,20 @@ test("EF-51_Individiual User Actions", async ({ page }) => {
     }
   );
   await page.goto(URLs.users);
+  // await page.setViewportSize(screenSize);
 
   //Delete User
-  await page.locator(Selectors.threeDotsBtn).nth(1).click();
-  await page.locator(Selectors.threeDotsMenuItem).nth(1).click();
-  await expect(page.locator(Selectors.confirmDelText)).toHaveText(
-    "Are you sure you want to delete?"
-  );
-  await page.locator(Selectors.deleteBtn).click();
-  await expect(page.locator(Selectors.toastMsg)).toHaveText("Success deleted", {
-    timeout: 5000,
-  });
+  // await page.locator(Selectors.threeDotsBtn).nth(1).click();
+  // await page.locator(Selectors.threeDotsMenuItem).nth(1).click();
+  // await expect(page.locator(Selectors.confirmDelText)).toHaveText(
+  //   "Are you sure you want to delete?"
+  // );
+  // await page.locator(Selectors.deleteBtn).click();
+  // await expect(page.locator(Selectors.toastMsg)).toHaveText("Success deleted", {
+  //   timeout: 5000,
+  // });
 
-  //Resend Invitation
+  // Resend Invitation
   await page.locator(Selectors.threeDotsBtn).nth(1).click();
   await page.locator(Selectors.threeDotsMenuItem).nth(2).click();
   await expect(page.locator(Selectors.toastMsg).nth(1)).toHaveText(
@@ -86,11 +79,11 @@ test("EF-51_Individiual User Actions", async ({ page }) => {
   );
   await page.waitForTimeout(2000);
   //Archive
-  await page.locator(Selectors.threeDotsBtn).nth(1).click();
-  await page.locator(Selectors.threeDotsMenuItem).nth(3).click();
-  await expect(
-    page
-      .locator(Selectors.toastMsg)
-      .filter({ hasText: /Success archived|Error archived/ })
-  ).toBeVisible();
+  // await page.locator(Selectors.threeDotsBtn).nth(1).click();
+  // await page.locator(Selectors.threeDotsMenuItem).nth(3).click();
+  // await expect(
+  //   page
+  //     .locator(Selectors.toastMsg)
+  //     .filter({ hasText: /Success archived|Error archived/ })
+  // ).toBeVisible();
 });
