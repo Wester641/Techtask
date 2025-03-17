@@ -2,17 +2,8 @@ import { test, expect } from "@playwright/test";
 import { Selectors, loginSelectors } from "./Selectors";
 import { URLs, Credentials } from "../../../../constants/links";
 
-test.beforeEach(async ({ page }) => {
-  await page.setViewportSize({ width: 1320, height: 768 });
-  await page.goto(URLs.login);
-  await page.waitForSelector(loginSelectors.email);
-  await page.fill(loginSelectors.email, Credentials.email);
-  await page.fill(loginSelectors.password, Credentials.password);
-  await page.click(loginSelectors.submitButton);
-  await page.waitForEvent("load");
-});
-
 test("EF-45__Units Table Functionality", async ({ page }) => {
+  await page.goto(URLs.units);
   await expect(page.locator(Selectors.searchInput)).toBeVisible();
   await page.waitForTimeout(500);
 
