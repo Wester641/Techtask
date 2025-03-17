@@ -36,11 +36,11 @@ test("EF-144 and EF-145__Navigate to the Units page", async ({ page }) => {
 
   await page.locator(Selectors.rowInTheTable).first().click();
 
-  await page.waitForURL(/\/units\/[0-9a-fA-F-]+$/, timeout);
+  await page.waitForURL(URLs.unitsPage, timeout);
 
   const currentUrl = page.url();
 
-  const unitId = currentUrl.match(/\/units\/([0-9a-fA-F-]+)$/)?.[1];
+  const unitId = currentUrl.match(URLs.unitsPage)?.[1];
 
   await expect(page).toHaveURL(new RegExp(`/units/${unitId}($|\\?)`));
 });
@@ -48,7 +48,7 @@ test("EF-144 and EF-145__Navigate to the Units page", async ({ page }) => {
 test("EF-146__Click on the first row in the table", async ({ page }) => {
   await page.locator(Selectors.rowInTheTable).first().click();
 
-  await page.waitForURL(/\/units\/[0-9a-fA-F-]+$/, timeout);
+  await page.waitForURL(URLs.unitsPage, timeout);
 
   for (let i = 0; i < 7; i++) {
     await page.locator(Selectors.specsTabs).nth(i).click();
@@ -65,9 +65,7 @@ test("EF-147__Overview Tab", async ({ page }) => {
   const [apiResponse] = await Promise.all([
     page.waitForResponse((response) => {
       const url = response.url();
-      return /https:\/\/app\.easyfleet\.ai\/api\/v1\/vehicles\/[0-9a-fA-F-]+\/$/.test(
-        url
-      );
+      return URLs.api.VEHICLES_LIST.test(url);
     }),
     page.locator(Selectors.rowInTheTable).first().click(),
   ]);

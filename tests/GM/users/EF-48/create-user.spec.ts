@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { Selectors, time, loginSelectors } from "./Selectors";
 
-import { URLs, Credentials } from "../../../constants/links";
+import { URLs, Credentials } from "../../../../constants/links";
 
 // CREATE USER
 
