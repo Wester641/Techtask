@@ -8,18 +8,8 @@ import {
   loginSelectors,
 } from "../../../../constants/links";
 
-test.beforeEach(async ({ page }) => {
-  await page.setViewportSize(screenSize);
-  await page.goto(URLs.login);
-  await page.goto(URLs.login);
-  await page.waitForSelector(loginSelectors.email);
-  await page.fill(loginSelectors.email, Credentials.email);
-  await page.fill(loginSelectors.password, Credentials.password);
-  await page.click(loginSelectors.submitButton);
-  await page.waitForURL(URLs.units, timeout);
-});
-
 test("EF-164__Assigned Equipment Tab - Verification", async ({ page }) => {
+  await page.goto(URLs.login);
   page.on("response", async (response) => {
     if (response.url().match(URLs.api.EQUIPMENTS_TAB)) {
       try {

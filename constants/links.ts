@@ -49,10 +49,13 @@ export const URLs = {
   vendorsPage: "/vendor",
   addParts: "/parts/create",
   partsPage: "/parts",
+  onboarding_form: "/onboarding-form",
+
   unitsPage: /\/units\/[0-9a-fA-F-]+$/,
   unitsUpdatePage: /\/units\/update\/[0-9a-fA-F-]+$/,
   updateSpecs: /\/units\/update\/[0-9a-fA-F-]+\/specifications$/,
   updateFinance: /\/units\/update\/[0-9a-fA-F-]+\/financial$/,
+
   api: {
     VEHICLES_LIST: new RegExp(
       `^${BASE_URL}/api\/v1\/vehicles\/[0-9a-fA-F-]+\/$`
