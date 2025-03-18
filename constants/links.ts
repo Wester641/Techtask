@@ -27,6 +27,7 @@ export const URLs = {
   createUnit: "/create-unit",
   updateUnit: "/units/update/",
   subPage: "/units?page=1&filter=",
+  usersPage: "/users",
   userEditPage: "/users/update/",
   inspectionForms: "/inspections/forms",
   issueCreatePage: "/issues/add",
