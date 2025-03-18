@@ -52,6 +52,11 @@ export const URLs = {
   addParts: "/parts/create",
   partsPage: "/parts",
   onboarding_form: "/onboarding-form",
+  addServiseHistoryFromUnitPage:
+    /service-history\/create\/\?vehicle_id=[a-z0-9-]+/,
+  addIssueFromUnitPage: /issues\/add\/\?vehicle_id=[a-z0-9-]+/,
+  addWorkOrderFromUnitPage: /work-orders\/add\/\?vehicle_id=[a-z0-9-]+/,
+  addMeterHistoryFromUnitPage: /meter-history\/\?vehicle_id=[a-z0-9-]+/,
 
   unitsPage: /\/units\/[0-9a-fA-F-]+$/,
   unitsUpdatePage: /\/units\/update\/[0-9a-fA-F-]+$/,
