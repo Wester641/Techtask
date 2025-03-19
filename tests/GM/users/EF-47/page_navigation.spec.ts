@@ -33,12 +33,6 @@ test("EF-47__Users Page Navigation", async ({ page }) => {
 
   await expect(page.locator(Selectors.usersNumber)).toBeVisible();
 
-  const totalOfUsers = await page.locator(Selectors.usersNumber).innerText();
-
-  const totalUsersCount = parseInt(totalOfUsers.replace(/\D/g, ""), 10);
-
-  const numberOfUsers = await page.locator(Selectors.usersRows).count();
-
   for (let i = 0; i < 10; i++) {
     const userRow = page.locator(Selectors.usersRows).nth(i);
 
