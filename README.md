@@ -20,9 +20,14 @@ cd EF-Play
 ```bash
 npm install
 ```
+```bash
 npm install -D @playwright/test@latest
+``` 
 # Also download new browser binaries and their dependencies:
+
+```bash
 npx playwright install --with-deps
+``` 
 
 ## Project Structure
 ```
