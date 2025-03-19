@@ -32,6 +32,7 @@ export const URLs = {
   issueCreatePage: "/issues/add",
   issues: "/issues",
   criticalFaults: "/faults",
+  samsaraDevices: "/samsara-devices",
   serviceHistory: "/service-history",
   serviceTaskCreate: "/services/service-task/create",
   serviceTask: "/services/service-task/",
