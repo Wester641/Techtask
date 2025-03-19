@@ -1,13 +1,14 @@
 import { test } from "@playwright/test";
 import { Selectors, time } from "./Selectors";
 
-import { URLs } from "../../../../constants/links";
+import { URLs, screenSize } from "../../../../constants/links";
 
 // CREATE USER
 
 test("create user test", async ({ page }) => {
+  await page.setViewportSize(screenSize);
+  
   await page.goto(URLs.users + "/create");
-  await page.setViewportSize({ width: 1920, height: 1080 });
 
   await page
     .locator(Selectors.input)

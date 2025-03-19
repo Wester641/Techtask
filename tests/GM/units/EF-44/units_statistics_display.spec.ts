@@ -1,10 +1,13 @@
 import { test } from "@playwright/test";
 import { Selectors } from "./Selectors";
 
-import { URLs } from "../../../../constants/links";
+import { URLs, screenSize } from "../../../../constants/links";
 
 test("EF-44__Units Statistics Display", async ({ page }) => {
+  await page.setViewportSize(screenSize);
+
   await page.goto(URLs.units);
+  
   await page.addStyleTag({
     content: `
     ${Selectors.unitsDownTime}:nth-child(1) {
