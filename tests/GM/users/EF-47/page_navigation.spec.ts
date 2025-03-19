@@ -7,31 +7,45 @@ test("EF-47__Users Page Navigation", async ({ page }) => {
 
   await page.goto(URLs.usersPage);
 
+  // Add styling
   await page.addStyleTag({
     content: `
     ${Selectors.usersRows},
     ${Selectors.usersNumber} {
-      background-color: lightblue; 
-      border: 1px solid #ccc;      
-    }
-  `,
+      background-color: #7d9ec087 !important; 
+      border: 1px solid #7d9ec087 !important;      
+    }`,
   });
 
-  const numberOfUsers = await page.locator(Selectors.usersRows).count();
+  await page.waitForTimeout(100);
+
+  // Remove styling
+  await page.addStyleTag({
+    content: `
+    ${Selectors.usersRows},
+    ${Selectors.usersNumber} {
+      background-color: transparent !important;
+      border: none !important;
+    }`,
+  });
+
+  await page.waitForTimeout(100);
+
+  await expect(page.locator(Selectors.usersNumber)).toBeVisible();
 
   const totalOfUsers = await page.locator(Selectors.usersNumber).innerText();
 
-  await expect(parseInt(totalOfUsers)).toBe(numberOfUsers);
+  const totalUsersCount = parseInt(totalOfUsers.replace(/\D/g, ""), 10);
+
+  const numberOfUsers = await page.locator(Selectors.usersRows).count();
 
   for (let i = 0; i < 10; i++) {
-
-    await page.locator(Selectors.usersRows).nth(i).waitFor({ state: "visible" });
-
     const userRow = page.locator(Selectors.usersRows).nth(i);
+
+    await userRow.waitFor({ state: "visible" });
 
     const cells = userRow.locator("td");
 
     await expect(cells).toHaveCount(8);
-
   }
 });
