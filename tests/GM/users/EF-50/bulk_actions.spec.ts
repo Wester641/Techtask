@@ -11,4 +11,5 @@ test("EF-50__Bulk Actions", async ({ page }) => {
   expect(page.locator(Selectors.bulkButtons).nth(0)).toBeVisible();
   expect(page.locator(Selectors.bulkButtons).nth(1)).toBeVisible();
   expect(page.locator(Selectors.checkbox).nth(5)).toBeChecked();
+  // FIX
 });
