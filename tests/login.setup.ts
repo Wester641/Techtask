@@ -10,8 +10,10 @@ setup("Login and save session", async ({ page }) => {
     .fill(Credentials.password);
   await page.getByRole("button", { name: "Login" }).click();
 
-  await page.waitForURL(URLs.onboarding_form);
-  await page.waitForURL(URLs.units);
+  await page.waitForURL(
+    (url) =>
+      url.pathname === URLs.onboarding_form || url.pathname === URLs.units
+  );
 
   await page.context().storageState({ path: ".auth/login.json" });
 });
