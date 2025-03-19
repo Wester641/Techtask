@@ -8,7 +8,9 @@ import {
 
 test("EF-144 and EF-145__Navigate to the Units page", async ({ page }) => {
   await page.setViewportSize(screenSize);
+
   await page.goto(URLs.units);
+
   await page.waitForSelector(
     ".VehicleDiagrams_vehicle_diagrams__cards__8eFkt",
     timeout
@@ -46,6 +48,7 @@ test("EF-144 and EF-145__Navigate to the Units page", async ({ page }) => {
 
 test("EF-146__Click on the first row in the table", async ({ page }) => {
   await page.setViewportSize(screenSize);
+
   await page.goto(URLs.units);
 
   await page.locator(Selectors.rowInTheTable).first().click();
@@ -65,6 +68,7 @@ test("EF-146__Click on the first row in the table", async ({ page }) => {
 
 test("EF-147__Overview Tab", async ({ page }) => {
   await page.setViewportSize(screenSize);
+  
   await page.goto(URLs.units);
 
   const [apiResponse] = await Promise.all([
@@ -88,6 +92,7 @@ test("EF-147__Overview Tab", async ({ page }) => {
 
 test("EF-148__Verify the Comments section", async ({ page }) => {
   await page.setViewportSize(screenSize);
+
   await page.goto(URLs.units);
 
   page.locator(Selectors.rowInTheTable).first().click(),
@@ -105,6 +110,7 @@ test("EF-148__Verify the Comments section", async ({ page }) => {
 
 test("EF-149__Pick file", async ({ page }) => {
   await page.setViewportSize(screenSize);
+
   await page.goto(URLs.units);
 
   page.locator(Selectors.rowInTheTable).first().click(),

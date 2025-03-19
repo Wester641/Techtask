@@ -8,10 +8,11 @@ import {
   truckMsrpRanges,
 } from "./Selectors";
 
-import { URLs } from "../../../../constants/links";
+import { URLs, screenSize } from "../../../../constants/links";
 
 test("EF-46__Add Unit Functionality", async ({ page }) => {
-  await page.setViewportSize({ width: 1920, height: 1080 });
+  await page.setViewportSize(screenSize);
+  
   await page.goto(URLs.createUnit);
 
   await page
