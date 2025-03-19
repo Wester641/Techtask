@@ -1,6 +1,5 @@
 import { test } from "@playwright/test";
 import { Selectors, time } from "./Selectors";
-
 import { URLs, screenSize } from "../../../../constants/links";
 
 // CREATE USER
