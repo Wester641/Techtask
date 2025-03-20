@@ -68,7 +68,7 @@ test("EF-282__Location of the units", async ({ page }) => {
 
     await page.waitForTimeout(500);
 
-    await page.getByText(deviceName, { exact: true }).nth(0).click();
+    await page.getByText( deviceName, { exact: true }).nth(0).click();
 
     // Add styling
     await page.addStyleTag({
@@ -91,11 +91,19 @@ test("EF-282__Location of the units", async ({ page }) => {
         border: none !important;
       }`,
     });
+    
+  const unitDetails = page.locator(Selectors.unitDetails);
 
-    await page.waitForTimeout(100);
+  await unitDetails.waitFor({ state: "visible", timeout: 20000 }); 
 
-    await expect(page.locator(Selectors.unitDetails)).toBeVisible();
+  await expect(unitDetails).toBeVisible();
 
-    await expect(page.locator(Selectors.locationSection).nth(2)).toBeVisible();
+  await page.waitForTimeout(1000);
+
+  const locationSection = page.locator(Selectors.locationSection).nth(2);
+  
+  await locationSection.waitFor({ state: "visible", timeout: 20000 });
+
+  await expect(page.locator(Selectors.locationSection).nth(2)).toBeVisible();
     
 });
