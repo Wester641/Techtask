@@ -1,9 +1,12 @@
 import { test, expect } from "@playwright/test";
 import { Selectors } from "./Selectors";
-import { URLs } from "../../../../constants/links";
+import { URLs, screenSize } from "../../../../constants/links";
 
 test("EF-153_edit_unitForm_display", async ({ page }) => {
+  await page.setViewportSize(screenSize);
+
   await page.goto(URLs.units);
+  
   await page.waitForSelector(Selectors.unitsBlock, {
     state: "attached",
     timeout: 10000,

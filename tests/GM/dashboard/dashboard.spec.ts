@@ -1,10 +1,13 @@
 import { test } from "@playwright/test";
-import { Selectors,  } from "./Selectors";
 
-import { URLs } from "../../../constants/links";
+import { Selectors  } from "./Selectors";
+
+
+import { URLs, screenSize } from "../../../constants/links";
 
 test("dashboard testing from 135 to 143 test cases.", async ({ page }) => {
-  await page.setViewportSize({ width: 1920, height: 1080 });
+  await page.setViewportSize(screenSize);
+  
   await page.goto(URLs.dashboard);
 
   await page.addStyleTag({
