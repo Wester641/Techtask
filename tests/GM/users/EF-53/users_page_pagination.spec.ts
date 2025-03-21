@@ -1,10 +1,9 @@
 import { test, expect } from "@playwright/test";
 import { Selectors, loginSelectors } from "./Selectors";
 import { URLs, Credentials } from "../../../../constants/links";
-import { execPath } from "process";
 
 test.beforeEach(async ({ page }) => {
-  await page.setViewportSize({ width: 1920, height: 1080 });
+  await page.setViewportSize({ width: 1920, height: 1030 });
   await page.goto(URLs.login);
   await page.waitForSelector(loginSelectors.email);
   await page.fill(loginSelectors.email, Credentials.email);

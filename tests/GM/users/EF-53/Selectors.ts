@@ -1,4 +1,6 @@
 export const Selectors = {
+  usersTab:
+    ".MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root Breadcrumb_breadcrumb__LeQAT css-o3d33y",
   searchInput: ".SearchFiters_containerSearch__searchBox__UwgF2",
   perPageDrdown: ".Pagination_paginationCont__range__perPage__option__6SSOl",
   perPageValue: "[role='menuitem']",

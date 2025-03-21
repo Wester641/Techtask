@@ -3,7 +3,7 @@ import { Selectors, loginSelectors } from "./Selectors";
 import { URLs, Credentials } from "../../../../constants/links";
 import { execPath } from "process";
 
-test.beforeEach(async ({ page }) => {
+test("EF-52_Search Field Functionality", async ({ page }) => {
   await page.setViewportSize({ width: 1920, height: 1080 });
   await page.goto(URLs.login);
   await page.waitForSelector(loginSelectors.email);
@@ -11,9 +11,6 @@ test.beforeEach(async ({ page }) => {
   await page.fill(loginSelectors.password, Credentials.password);
   await page.click(loginSelectors.submitButton);
   await page.waitForURL(URLs.units, { timeout: 30000 });
-});
-
-test("EF-52_Search Field Functionality", async ({ page }) => {
   await page.goto(URLs.users);
 
   await expect(page.locator(Selectors.searchInput).nth(0)).toBeVisible();

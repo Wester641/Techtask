@@ -3,6 +3,16 @@ export const Credentials = {
   password: "zafarzhon77",
 };
 
+export const loginSelectors = {
+  email: 'input[type="text"]',
+  password: 'input[type="password"]',
+  submitButton: 'button[type="submit"]',
+};
+
+export const screenSize = { width: 1920, height: 1080 };
+export const timeout = { timeout: 10000 };
+const BASE_URL = "https://app.easyfleet.ai";
+
 export const URLs = {
   login: "/login",
   dashboard: "/dashboard",
