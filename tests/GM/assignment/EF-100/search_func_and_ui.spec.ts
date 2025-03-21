@@ -72,4 +72,6 @@ test("EF-100__Verify Search Functionality and UI", async ({ page }) => {
 
   // Check allVehiclesAfter toBe vehicleNamesAPI | allVehiclesAfter contain randomVehicleFull
 
+  // 123
+
 });
