@@ -7,7 +7,7 @@ test("EF-114__Verify Pagination Functionality", async ({ page }) => {
   await page.goto(URLs.samsaraDevices);
   await page.waitForTimeout(2500);
 
-  const pageNumber = Math.floor(Math.random() * 4 + 1).toFixed();
+  const pageNumber = Math.floor(Math.random() * 4 + 2).toFixed();
   console.log("Page Number:", pageNumber);
   await page.getByRole("button", { name: `Go to page ${pageNumber}` }).click();
 

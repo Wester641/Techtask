@@ -5,17 +5,21 @@ import { URLs, timeout, screenSize } from "../../../../constants/links";
 test("EF-161__Financial Tabs - Widgets Verifications", async ({ page }) => {
   await page.setViewportSize(screenSize);
 
-  await page.goto(URLs.login);
+  await page.goto(URLs.units);
 
   await page.locator(Selectors.firstRowInTable).first().click();
 
   await page.waitForURL(URLs.unitsPage, timeout);
 
-  await page.locator(Selectors.specsTabs).nth(2).click();
+  await page.getByRole("tab", { name: "Financial" }).click();
 
   await page.waitForTimeout(500);
 
-  await page.locator(Selectors.editPencilIcon).nth(12).click();
+  await page
+    .locator("div")
+    .filter({ hasText: /^Lifecycle Details$/ })
+    .locator("div")
+    .click();
   // await expect(page).toHaveURL(
   //   URLs.updateFinance
   // );
@@ -24,6 +28,6 @@ test("EF-161__Financial Tabs - Widgets Verifications", async ({ page }) => {
   await page.waitForTimeout(2000);
 
   await page.goBack();
-  
+
   await page.waitForTimeout(2000);
 });

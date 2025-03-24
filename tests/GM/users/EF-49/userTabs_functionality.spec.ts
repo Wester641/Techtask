@@ -4,7 +4,7 @@ import { URLs, screenSize } from "../../../../constants/links";
 
 test("EF-49__User Tabs Functionality", async ({ page }) => {
   await page.setViewportSize(screenSize);
-  
+
   await page.goto(URLs.users);
 
   await page.waitForTimeout(10000);

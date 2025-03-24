@@ -4,7 +4,7 @@ import { URLs, screenSize } from "../../../../constants/links";
 
 test("EF-51_Individiual User Actions", async ({ page }) => {
   await page.setViewportSize(screenSize);
-  
+
   await page.goto(URLs.users);
 
   await page.locator(Selectors.threeDotsBtn).nth(1).click();

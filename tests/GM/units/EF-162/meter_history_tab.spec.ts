@@ -5,8 +5,7 @@ import { URLs, timeout, screenSize } from "../../../../constants/links";
 test("EF-162__Meter History Tab - Table Verification", async ({ page }) => {
   await page.setViewportSize(screenSize);
 
-  await page.goto(URLs.login);
-  
+  await page.goto(URLs.units);  
   page.on("response", async (response) => {
     if (response.url().match(URLs.api.METER_ENTRIES_TAB)) {
       try {

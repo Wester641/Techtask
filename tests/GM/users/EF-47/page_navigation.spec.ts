@@ -5,7 +5,7 @@ import { screenSize, URLs } from "../../../../constants/links";
 test("EF-47__Users Page Navigation", async ({ page }) => {
   await page.setViewportSize(screenSize);
 
-  await page.goto(URLs.usersPage);
+  await page.goto(URLs.users);
 
   // Add styling
   await page.addStyleTag({

@@ -3,7 +3,7 @@ import { Selectors } from "./Selectors";
 import { screenSize, URLs } from "../../../../constants/links";
 
 test("EF-50__Bulk Actions", async ({ page }) => {
-  await page.goto(URLs.usersPage);
+  await page.goto(URLs.users);
   await page.setViewportSize(screenSize);
   await page.waitForTimeout(3000);
 
