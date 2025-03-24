@@ -5,17 +5,17 @@ import { URLs, screenSize } from "../../../../constants/links";
 test("EF-100__Verify Search Functionality and UI", async ({ page }) => {
   await page.setViewportSize(screenSize);
 
-  await page.goto(URLs.samsaraDevices);
+  await page.goto(URLs.assigments);
 
   const apiResponse = await page.waitForResponse(
     (response) =>
-      response.url().includes("https://app.easyfleet.ai/api/v1/vehicles/telematics-devices/?offset=0&limit=10") &&
+      response.url().includes("https://app.easyfleet.ai/api/v1/vehicles/?limit=1000") &&
       response.status() === 200
   );
 
   const apiResponseData = await apiResponse.json();
 
-  const vehicleNamesAPI = apiResponseData.results.map(vehicle => vehicle.device_name);
+  const vehicleNamesAPI = apiResponseData.results.map(vehicle => vehicle.name);
 
   const randomVehicleFull = vehicleNamesAPI[Math.floor(Math.random() * vehicleNamesAPI.length)];
 
@@ -60,7 +60,7 @@ test("EF-100__Verify Search Functionality and UI", async ({ page }) => {
 
   await page.waitForTimeout(3000);
 
-  await expect(page.getByRole('cell', { name: randomVehicleFull, exact: true }).first()).toHaveText(randomVehicleFull);
+  await expect(page.locator(Selectors.vehicleCell)).toHaveText(randomVehicleFull);
 
   await page.locator(Selectors.searchInput).fill("");
 
@@ -71,5 +71,7 @@ test("EF-100__Verify Search Functionality and UI", async ({ page }) => {
   console.log("All vehicles after", await page.locator(Selectors.vehicleNameRow).allTextContents());
 
   // Check allVehiclesAfter toBe vehicleNamesAPI | allVehiclesAfter contain randomVehicleFull
+
+  // 123
 
 });
