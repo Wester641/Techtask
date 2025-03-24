@@ -1,8 +1,10 @@
 import { test, expect } from "@playwright/test";
 import { Selectors } from "./Selectors";
-import { URLs } from "../../../../constants/links";
+import { screenSize, URLs } from "../../../../constants/links";
 
 test("EF-53__Users Page Pagination", async ({ page }) => {
+  await page.setViewportSize(screenSize);
+
   await page.goto(URLs.users);
 
   await page.locator(Selectors.perPageDrdown).scrollIntoViewIfNeeded();

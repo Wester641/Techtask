@@ -5,22 +5,26 @@ import { URLs, timeout, screenSize } from "../../../../constants/links";
 test("EF-160__Specs Tabs - Widgets Verifications", async ({ page }) => {
   await page.setViewportSize(screenSize);
 
-  await page.goto(URLs.login);
+  await page.goto(URLs.units);
 
   await page.locator(Selectors.firstRowInTable).first().click();
 
   await page.waitForURL(URLs.unitsPage, timeout);
 
-  await page.locator(Selectors.specsTabs).nth(1).click();
+  await page.getByRole("tab", { name: "Specs" }).click();
 
   await page.waitForTimeout(500);
 
-  await page.locator(Selectors.editPencilIcon).nth(3).click();
+  await page
+    .locator("div")
+    .filter({ hasText: /^Dimensions$/ })
+    .locator("div")
+    .click();
 
   // await expect(page).toHaveURL(
   //   URLs.updateSpecs
   // );
-  
+
   await expect(page).toHaveURL(URLs.unitsUpdatePage);
 
   await page.waitForTimeout(2000);
