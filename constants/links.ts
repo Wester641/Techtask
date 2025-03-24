@@ -37,6 +37,7 @@ export const URLs = {
   serviceHistory: "/service-history",
   serviceTaskCreate: "/services/service-task/create",
   serviceTask: "/services/service-task/",
+  trainingPage: "/training-videos/",
   workOrders: "/work-orders",
   workOrdersCreate: "/work-orders/add",
   serviceRemindersPage: "/reminders/services",
