@@ -3,6 +3,7 @@ import { Selectors } from "./Selectors";
 import { screenSize, URLs } from "../../../../constants/links";
 
 test("EF-108__Verify Search Functionality", async ({ page }) => {
+  await page.setViewportSize(screenSize);
   await page.goto(URLs.samsaraDevices);
 
   const searched_value = await page
