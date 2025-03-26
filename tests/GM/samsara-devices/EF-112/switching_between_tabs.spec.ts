@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { BASE_URL, screenSize, URLs } from "../../../../constants/links";
 
-test("EF-113__Verify Add Samsara Integration", async ({ page }) => {
+test("EF-112__Switching between tabs ", async ({ page }) => {
   await page.setViewportSize(screenSize);
   await page.goto(URLs.samsaraDevices);
   const requests: string[] = [];
