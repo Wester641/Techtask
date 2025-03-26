@@ -11,7 +11,7 @@ export const loginSelectors = {
 
 export const screenSize = { width: 1920, height: 1080 };
 export const timeout = { timeout: 10000 };
-const BASE_URL = "https://app.easyfleet.ai";
+export const BASE_URL = "https://app.easyfleet.ai";
 
 export const URLs = {
   login: "/login",
