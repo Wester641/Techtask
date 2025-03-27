@@ -9,6 +9,4 @@ export const Selectors = {
   dropdown: ".css-hlgwow",
   freeText: ".css-10oer18",
   tickLabel: ".css-1jaw3da",
-  
-  };
-  
+};
