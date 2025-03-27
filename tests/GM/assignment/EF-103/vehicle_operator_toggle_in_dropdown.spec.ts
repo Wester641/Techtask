@@ -16,5 +16,10 @@ test("EF-103__Verify Vehicle Operator Toggle in Dropdown", async ({ page }) => {
 
   await page.getByText("Operator").click();
 
-  await expect(page.getByText("Operator")).toBeVisible();
+  await expect(
+    page
+      .locator("div")
+      .filter({ hasText: /^Operator$/ })
+      .getByRole("paragraph")
+  ).toBeVisible();
 });
