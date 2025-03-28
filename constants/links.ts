@@ -87,3 +87,10 @@ export const URLs = {
 // ISSUES_TAB:
 // /https:\/\/app\.easyfleet\.ai\/api\/v1\/vehicles\/[0-9a-fA-F-]+\/issues\//,
 // /https:\/\/app\.easyfleet\.ai\/api\/v1\/vehicles\/[0-9a-fA-F-]+\/$/
+
+export const Styles = {
+  background_color: "#7d9ec087",
+  border: "1px solid #7d9ec087",
+  transparent: "transparent",
+  none: "none",
+};

@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { Selectors } from "./Selectors";
-import { URLs, screenSize } from "../../../../constants/links";
+import { Styles, URLs, screenSize } from "../../../../constants/links";
 
 test("EF-193__Inspections History Page Navigation", async ({ page }) => {
   await page.setViewportSize(screenSize);
@@ -9,24 +9,22 @@ test("EF-193__Inspections History Page Navigation", async ({ page }) => {
 
   await page.waitForTimeout(500);
 
-  await page.addStyleTag({
-    content: `
-      ${Selectors.managementTab} {
-        background-color: #7d9ec087 !important; 
-        border: 1px solid #7d9ec087 !important;      
-      }`,
-  });
+  for (let i = 0; i < 3; i++) {
+    const sideBar = await page.getByRole("heading").nth(i);
 
-  await page.waitForTimeout(500);
+    await sideBar.evaluate((element) => {
+      element.style.backgroundColor = Styles.background_color;
+      element.style.border = Styles.border;
+    });
 
-  // Remove styling
-  await page.addStyleTag({
-    content: `
-      ${Selectors.managementTab} {
-        background-color: transparent !important;
-        border: none !important;
-      }`,
-  });
+    await page.waitForTimeout(500);
+
+    await sideBar.evaluate((element) => {
+      element.style.backgroundColor = Styles.transparent;
+      element.style.border = Styles.none;
+    });
+    expect(sideBar).toBeVisible();
+  }
 
   await page.waitForTimeout(3000);
 
