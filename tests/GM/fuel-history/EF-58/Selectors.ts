@@ -1,0 +1,16 @@
+export const Selectors = {
+  add_fuel_entry_btn: ".IconButton_open_block_cont__HN7q1",
+  vehicle_input: "[class*='css-19bb58m']",
+  vehicle_option: ".react-select__menu div",
+  fuel_entry_date: "input[name='date']",
+  fuel_entry_time: "input[name='time']",
+  vendor_name_input: "[class*='css-1ff06q0-control']",
+  vendor_option: ".input[id^='react-select']",
+  submit_btn: "[type='submit']",
+  odometer_input: "input[name='odometer']",
+  gallons_input: "input[name='volume']",
+  gallon_price_input: "input[name='fuel_price']",
+  fuel_type_input: "input[name='fuel_type']",
+  toast_msg: "div[class*='Toastify__toast--close-on-click']",
+  error_msg: ".SelectField_select__error__Lupa0",
+};
