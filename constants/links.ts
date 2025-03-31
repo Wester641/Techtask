@@ -29,6 +29,7 @@ export const URLs = {
   subPage: "/units?page=1&filter=",
   usersPage: "/users",
   userEditPage: "/users/update/",
+  inspectionForms: "/inspections/forms",
   inspection_forms: "/inspections/forms",
   inspection_history: "inspections/history",
   issueCreatePage: "/issues/add",
