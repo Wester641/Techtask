@@ -30,6 +30,7 @@ export const URLs = {
   usersPage: "/users",
   userEditPage: "/users/update/",
   inspection_history: "/inspections/history/",
+  inspectionForms: "/inspections/forms/",
   inspection_forms: "/inspections/forms",
   issueCreatePage: "/issues/add",
   issues: "/issues",
