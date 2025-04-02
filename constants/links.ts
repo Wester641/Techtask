@@ -38,6 +38,7 @@ export const URLs = {
   samsaraDevices: "/samsara-devices",
   serviceHistory: "/service-history",
   serviceTaskCreate: "/services/service-task/create",
+  service_task_create: "/services/service-task/create/",
   serviceTask: "/services/service-task/",
   settings: "/settings/",
   trainingPage: "/training-videos/",
