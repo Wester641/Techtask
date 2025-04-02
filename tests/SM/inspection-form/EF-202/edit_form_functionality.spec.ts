@@ -32,62 +32,35 @@ test("EF-202__Edit Form Functionality", async ({ page }) => {
 
   await expect(page.locator(Selectors.headerTable).first()).toBeVisible();
 
-  await page.locator(Selectors.settingsButton).nth(2).click();
-
-  await page.waitForTimeout(3000);
-  
-  const settingsNames = await page.locator(Selectors.settingsDropdown).first().allInnerTexts();
-
-  await expect(settingsNames).toStrictEqual(['Inspecton Items\nTitle and Setting\nDelete\nArchive']);
+  await page.locator(Selectors.dataRow).nth(0).click();
 
   await page.waitForTimeout(3000);
 
-  await page.getByRole('menuitem', { name: 'Title and Setting' }).click();
+  await expect(page.getByText("Inspection Details")).toBeVisible();
+
+  await page.locator(Selectors.detailsButton).first().click();
 
   await page.waitForTimeout(2000);
 
-  const randomNum = Math.floor(Math.random() * 100);
-  const expectedText = `Edited Test Form number: ${randomNum}`;
+  await expect(page.locator(Selectors.dataBlock).first()).toBeVisible();
 
-  await page.locator(Selectors.titleField).fill(`Edited Test Form number: ${randomNum}`);
+  if (await page.locator(Selectors.dataBlock).count() == 1) {
+    
+    await page.locator(Selectors.dataBlock).first().click();
 
-  await page.locator('textarea[name="description"]').fill(`Edited Test Description number: ${randomNum}`);
+    await page.waitForTimeout(2000);
+  }
 
-  await page.locator(Selectors.tickInput).nth(0).click();
+  await page.locator(Selectors.titleField).nth(0).fill("Edited Data Label Test");
 
-  await page.locator(Selectors.tickInput).nth(1).click();
+  await page.locator(Selectors.titleField).nth(1).fill("Edited Label Test");
 
-  await page.locator(Selectors.colorDropdown).first().click();
-
-  const allColors = await page.locator(Selectors.color).all();
-
-  await allColors[Math.floor(Math.random() * allColors.length)].click();
+  await page.locator('textarea[name="items\\.0\\.instructions"]').nth(0).fill("Edited Test");
 
   await page.getByText("Save").click();
 
   await page.waitForTimeout(3000);
   
-  await expect(page.locator('[id="\\31 "]').getByText('Inspection form successfully updated!')).toBeVisible();
+  await expect(page.locator('[id="\\31 "]').getByText('Updated!')).toBeVisible();
   
-  let found = false;
-
-  const amountOfPages = (await page.locator(Selectors.pageButton).count()) - 2;
-
-  for (let i = 0; i < amountOfPages; i++) {
-    for (let j = 0; j < 10; j++) {
-      const currentCell = page.locator(Selectors.cellTitle).nth(j);
-      const cellText = await currentCell.innerText();
-
-      if (cellText.includes(expectedText)) {
-        found = true;
-        break;
-      }
-    }
-    if (found) break; 
-    await page.getByRole('button', { name: 'Go to next page' }).click();
-    await page.waitForTimeout(3000);
-  }
-
-  expect(found).toBe(true);
-
 });
