@@ -3,19 +3,16 @@ import { screenSize } from "../../../../constants/links";
 import { Selectors } from "./Selectors";
 const randomOption = Math.floor(Math.random() * 3);
 
-test("  EF-213__A new Work Order is added to the list ", async ({ page }) => {
+test("  EF-213__a new Work Order is added to the list ", async ({ page }) => {
   await page.setViewportSize(screenSize);
 
   await page.goto("/issues");
-  await page.getByRole("cell", { name: "Unit #2099 12:31:03 PM" }).click();
-  await page.locator(".IconButton_label_block__Ri\\+VB").click();
+  await page.getByRole("cell").nth(0).click();
+  await page.locator(Selectors.first_cell).click();
 
-  await page
-    .locator(".IssueStatus_status__solve__modal__item__Yj1C6")
-    .first()
-    .click();
+  await page.locator(Selectors.status_solveItem).first().click();
 
-  await page.locator(".react-select__value-container").first().click();
+  await page.locator(Selectors.value_container).first().click();
   await page.getByRole("option").nth(randomOption).click();
 
   await page
@@ -25,11 +22,7 @@ test("  EF-213__A new Work Order is added to the list ", async ({ page }) => {
     .click();
   await page.getByRole("option").nth(randomOption).click();
 
-  await page
-    .locator(
-      "div:nth-child(3) > .SelectField_select__nkrpi > .Select_select__input__6V5DK > .react-select__control"
-    )
-    .click();
+  await page.locator(Selectors.select_field2).click();
   await page.getByRole("option").nth(randomOption).click();
   await page.getByRole("button", { name: "Save Work Order" }).click();
 });
