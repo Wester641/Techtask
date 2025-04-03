@@ -7,34 +7,7 @@ test("EF-93__Verify Search Field and Vehicle Filter", async ({ page }) => {
 
   await page.goto(URLs.meterHistory);
 
-  const apiResponse = await page.waitForResponse(
-    (response) =>
-      response
-        .url()
-        .includes(
-          "https://app.easyfleet.ai/api/v1/vehicles/meter-entity/?offset=0&limit=10"
-        ) && response.status() === 200
-  );
-
-  const apiResponseData = await apiResponse.json();
-
-  const meterValues = apiResponseData.results
-    .map((item) => item.meter_value)
-    .filter(Boolean);
-
-  const randomMeterValue =
-    meterValues[Math.floor(Math.random() * meterValues.length)];
-
-  const vehicles = apiResponseData.results
-    .map((item) => item.vehicle?.name)
-    .filter(Boolean);
-
-  const filteredVehicles = vehicles.filter(
-    (vehicle) => !vehicle.includes("Truck")
-  ); // Except "Truck..." vehicles due to Bug with filter
-
-  const randomVehicle =
-    filteredVehicles[Math.floor(Math.random() * filteredVehicles.length)];
+  await page.waitForTimeout(2000);
 
   // Add styling
   await page.addStyleTag({
@@ -58,7 +31,37 @@ test("EF-93__Verify Search Field and Vehicle Filter", async ({ page }) => {
       }`,
   });
 
-  await page.waitForTimeout(3000);
+
+  await page.waitForTimeout(2000);
+
+  const allRows = await page.locator(Selectors.dataRow).all();
+
+  const allCellNames: string[] = [];
+
+  const allMeterValues: string[] = [];
+
+  for (const row of allRows) {
+
+    const nameCell = row.locator(Selectors.dataCell).first();
+
+    const meterCell = row.locator(Selectors.dataCell).nth(2);
+
+    const cellText = await nameCell.innerText();
+
+    const cellMeter = await meterCell.innerText();
+
+    allCellNames.push(cellText);
+
+    allMeterValues.push(cellMeter);
+  }
+
+  expect(allCellNames.length).toBe(10);
+
+  expect(allMeterValues.length).toBe(10);
+
+  const randomName = allCellNames[Math.floor(Math.random() * allCellNames.length)];
+
+  const randomMeterValue = allMeterValues[Math.floor(Math.random() * allMeterValues.length)];
 
   await expect(page.locator(Selectors.searchField)).toBeVisible();
 
@@ -74,15 +77,26 @@ test("EF-93__Verify Search Field and Vehicle Filter", async ({ page }) => {
 
   await page.locator(Selectors.vehicleFilter).click();
 
-  await page.locator(Selectors.searchVehicleField).fill(randomVehicle);
+  await page.locator(Selectors.searchVehicleField).fill(randomName);
 
   await page.waitForTimeout(3000);
 
-  await page.locator(Selectors.vehicleFilterResult).first().click();
+  const allVehicleResults = await page.locator(Selectors.vehicleFilterResult).all();
+
+  for (const currentRow of allVehicleResults) {
+    const text = await currentRow.innerText();
+    if (text === String(randomName)) {
+      await currentRow.click();
+      break
+    }
+  }
 
   await page.getByRole("button", { name: "Apply" }).click();
 
+  await page.waitForTimeout(3000);
+
   await expect(
-    page.getByRole("cell", { name: randomVehicle, exact: true }).first()
-  ).toHaveText(randomVehicle);
+    page.getByRole("cell", { name: randomName, exact: true }).first()
+  ).toHaveText(randomName);
+
 });

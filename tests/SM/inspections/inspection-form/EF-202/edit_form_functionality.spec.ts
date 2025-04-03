@@ -51,11 +51,13 @@ test("EF-202__Edit Form Functionality", async ({ page }) => {
     await page.waitForTimeout(2000);
   }
 
-  await page.locator(Selectors.titleField).nth(0).fill("Edited Data Label Test");
+  const randomNum = await Math.floor(Math.random() * 100);
 
-  await page.locator(Selectors.titleField).nth(1).fill("Edited Label Test");
+  await page.locator(Selectors.titleField).nth(0).fill(`Edited Data Label Test ${randomNum}`);
 
-  await page.locator('textarea[name="items\\.0\\.instructions"]').nth(0).fill("Edited Test");
+  await page.locator(Selectors.titleField).nth(1).fill(`Edited Label Test ${randomNum}`);
+
+  await page.locator('textarea[name="items\\.0\\.instructions"]').nth(0).fill(`Edited Test ${randomNum}`);
 
   await page.getByText("Save").click();
 
