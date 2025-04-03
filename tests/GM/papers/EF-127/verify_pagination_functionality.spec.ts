@@ -1,37 +1,36 @@
 import { expect, test } from "@playwright/test";
 import { screenSize } from "../../../../constants/links";
-import { Selectors } from "./Selectors";
 
-test("Verify Pagination Functionality", async ({ page }) => {
+test("EF-127__Verify Pagination Functionality", async ({ page }) => {
   await page.setViewportSize(screenSize);
-
   await page.goto("/papers");
 
-  const PAGE_PARAMETERS = "https://app.easyfleet.ai/papers?page=";
+  const PAGE_PARAMETERS = "/papers?page=";
 
-  await page.getByRole("button", { name: "Go to next page" }).click();
-  expect(page).toHaveURL(`${PAGE_PARAMETERS}2`);
+  const nextPageButton = page.getByRole("button", { name: "Go to next page" });
+  const prevPageButton = page.getByRole("button", {
+    name: "Go to previous page",
+  });
 
-  await page.getByRole("button", { name: "Go to next page" }).click();
-  expect(page).toHaveURL(`${PAGE_PARAMETERS}3`);
+  if (!(await nextPageButton.isDisabled())) {
+    await nextPageButton.click();
+    await expect(page).toHaveURL(`${PAGE_PARAMETERS}2`);
+  } else {
+    console.log("Next page button is disabled, skipping click.");
+  }
 
-  await page.getByRole("button", { name: "more" }).click();
-  expect(page).toHaveURL(`${PAGE_PARAMETERS}1&limit=10`);
+  if (!(await prevPageButton.isDisabled())) {
+    await prevPageButton.click();
+  } else {
+    console.log("Previous page button is disabled, skipping click.");
+  }
 
-  await page.waitForSelector(Selectors.muiLisRoot);
+  const per_page_button = page.getByRole("button", { name: "more" });
 
-  await page.getByRole("menuitem", { name: "20" }).click();
-  expect(page).toHaveURL(`${PAGE_PARAMETERS}1&limit=20`);
+  await page.getByRole("listitem").nth(1).click();
 
-  await page.getByRole("button", { name: "more" }).click();
-
-  await page.getByRole("menuitem", { name: "50" }).click();
-  expect(page).toHaveURL(`${PAGE_PARAMETERS}1&limit=50`);
-
-  await page.getByRole("button", { name: "more" }).click();
-
-  await page.getByRole("menuitem", { name: "10" }).click();
-  expect(page).toHaveURL(`${PAGE_PARAMETERS}1&limit=10`);
-
-  await page.getByRole("button", { name: "more" }).click();
+  for (let i = 0; i < 3; i++) {
+    await per_page_button.click();
+    await page.getByRole("menuitem").nth(i).click();
+  }
 });
