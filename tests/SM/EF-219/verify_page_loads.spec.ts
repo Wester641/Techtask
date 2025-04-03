@@ -1,11 +1,10 @@
 import { test, expect } from "@playwright/test";
-// import { Selectors } from "./Selectors";
 import { screenSize } from "../../../constants/links";
 
 test("EF-219 verify page ;oads ", async ({ page }) => {
   await page.setViewportSize(screenSize);
 
-  await page.goto("https://app.easyfleet.ai/service-history");
+  await page.goto("/service-history");
   await expect(
     page.getByRole("columnheader", { name: "Vehicle", exact: true })
   ).toBeVisible();
