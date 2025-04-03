@@ -46,6 +46,7 @@ test("EF-208__Passing inspection via web-application", async ({ page }) => {
     const formText = await form.innerText();
 
     if (formText === targetFormName) {
+      await page.waitForTimeout(1000);
       await form.click();
       break;
     }

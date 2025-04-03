@@ -52,7 +52,7 @@ test("EF-203__Delete Forms Functionality", async ({ page }) => {
 
   await page.waitForTimeout(3000);
 
-  await page.getByText('Delete').click();
+  await page.getByRole('menuitem', { name: 'Delete' }).click();
 
   await page.waitForTimeout(2000);
 

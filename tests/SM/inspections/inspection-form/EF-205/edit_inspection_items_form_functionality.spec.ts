@@ -63,7 +63,7 @@ test("EF-205__Editing only 'Inspection Items' function", async ({ page }) => {
 
   await page.getByText("Save").click();
 
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(3500);
   
   await expect(page.locator('[id="\\31 "]').getByText('Updated!')).toBeVisible();
   

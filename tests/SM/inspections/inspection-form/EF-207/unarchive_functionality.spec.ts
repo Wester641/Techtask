@@ -34,7 +34,7 @@ test("EF-207__Unarchive Forms Functionality", async ({ page }) => {
 
   await page.waitForTimeout(1000);
 
-  await expect(page.url()).toBe("https://app.easyfleet.ai/inspections/forms?status=archived");
+  await expect(page.url()).toBe("https://app.easyfleet.ai/inspections/forms/?status=archived");
 
   const unarchivedRow = await page.getByRole('row').locator(Selectors.dataCell).nth(0).innerText();
 
@@ -60,7 +60,7 @@ test("EF-207__Unarchive Forms Functionality", async ({ page }) => {
 
   await page.waitForTimeout(1000);
 
-  await expect(page.url()).toBe("https://app.easyfleet.ai/inspections/forms?status=active");
+  await expect(page.url()).toBe("https://app.easyfleet.ai/inspections/forms/?status=active");
 
   let found = false;
 
