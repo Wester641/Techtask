@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { screenSize, URLs } from "../../../../../../../EF-102/EF-Play/constants/links";
+import { screenSize, URLs } from "../../../../../constants/links";
 import { Selectors, today } from "./Selectors";
 
 test("EF-247__Add Work Order Functionality", async ({ page }) => {

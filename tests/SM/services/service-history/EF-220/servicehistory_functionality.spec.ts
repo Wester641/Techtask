@@ -1,6 +1,6 @@
 import { test } from "@playwright/test";
 import { Selectors } from "./Selectors";
-import { screenSize } from "../../../../constants/links";
+import { screenSize } from "../../../../../constants/links";
 const randomOption = Math.floor(Math.random() * 3);
 
 test("EF-220__ service history functionality", async ({ page }) => {
