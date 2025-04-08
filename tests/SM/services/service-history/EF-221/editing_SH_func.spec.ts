@@ -27,8 +27,8 @@ test("EF-220__ service history functionality", async ({ page }) => {
   await page.getByRole("option").nth(randomOption).click();
   await page.locator(Selectors.select_field2).click();
   await page.getByRole("option").nth(randomOption).click();
-  await expect(page.locator(Selectors.modal_window)).toBeVisible();
 
+  await expect(page.locator(Selectors.modal_window)).toBeVisible();
   const vendors = page.locator(Selectors.vendors);
   const count_2 = await vendors.count();
 
