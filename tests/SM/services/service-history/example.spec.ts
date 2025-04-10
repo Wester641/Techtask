@@ -7,3 +7,5 @@ test("exmaple-2", async ({ page }) => {
 
   await page.goto("/units");
 });
+
+// verify_that_the_service_reminders_page_opens_correctly
