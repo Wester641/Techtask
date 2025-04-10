@@ -2,7 +2,7 @@ import { test } from "@playwright/test";
 import { screenSize, URLs } from "../../../../../constants/links";
 import { Selectors } from "./Selectors";
 
-test("EF-276__service_reminders_functionality", async ({ page }) => {
+test("EF-276__add_service_reminders_functionality", async ({ page }) => {
   await page.setViewportSize(screenSize);
   await page.goto(URLs.serviceRemindersPage);
   const random = Math.floor(Math.random() * 3);
