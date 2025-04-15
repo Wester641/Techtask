@@ -1,6 +1,6 @@
 export const Credentials = {
-  email: "pikoy25780@bitflirt.com",
-  password: "zafarzhon77",
+  email: "shakirowww099@gmail.com",
+  password: "admin2025",
 };
 
 export const loginSelectors = {
@@ -25,6 +25,7 @@ export const URLs = {
   meterHistory: "/meter-history",
   papers: "/papers",
   createUnit: "/create-unit",
+  unitCreate: "/units/create",
   updateUnit: "/units/update/",
   subPage: "/units?page=1&filter=",
   usersPage: "/users",
@@ -41,6 +42,7 @@ export const URLs = {
   service_task_create: "/services/service-task/create/",
   serviceTask: "/services/service-task/",
   settings: "/settings/",
+  settingsRoles: "/settings/roles/",
   trainingPage: "/training-videos/",
   workOrders: "/work-orders",
   workOrdersCreate: "/work-orders/add",

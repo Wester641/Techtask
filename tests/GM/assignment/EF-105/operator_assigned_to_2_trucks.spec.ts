@@ -14,7 +14,7 @@ test("EF-105__Verify Assignment Overlap Handling for 1 Operator Assigned to 2 Tr
   const apiResponse = await page.waitForResponse((response) => {
     console.log("Checking:", response.url());
     return (
-      response.url().includes("/api/v1/vehicles/?limit=1000") &&
+      response.url().includes("/api/v1/vehicles/?limit=1500") &&
       response.status() === 200
     );
   });

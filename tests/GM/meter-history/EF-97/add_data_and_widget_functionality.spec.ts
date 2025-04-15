@@ -7,25 +7,6 @@ test("EF-97__Verify 'Add Meter Entry' Button and Widget Functionality", async ({
   
   await page.goto(URLs.meterHistory);
 
-
-
-
-
-
-  const apiResponse = await page.waitForResponse(
-    (response) =>
-      response.url().includes("https://app.easyfleet.ai/api/v1/vehicles/meter-entity/?offset=0&limit=10") &&
-      response.status() === 200
-  );
-
-  const apiResponseData = await apiResponse.json();
-
-  const vehicles = apiResponseData.results.map(item => item.vehicle?.name).filter(Boolean);
-
-  const filteredVehicles = vehicles.filter(vehicle => !vehicle.includes("Truck", "User")); // Except "Truck..." vehicles due to Bug with filter
-
-  const randomVehicle = filteredVehicles[Math.floor(Math.random() * filteredVehicles.length)];
-
   await page.waitForTimeout(500);
 
   // Add styling
@@ -54,11 +35,23 @@ test("EF-97__Verify 'Add Meter Entry' Button and Widget Functionality", async ({
 
   await page.waitForTimeout(3000);
 
-  await page.locator(Selectors.searchInput).fill(randomVehicle);
+  const rows = await page.locator(Selectors.dataRow).all(); 
+
+  const vehicleNames: string[] = [];
+  
+  for (const row of rows) {
+    const firstTD = row.locator('td:first-child');
+    const text = await firstTD.innerText();
+    vehicleNames.push(text.trim());
+  }
+
+  const randomVehicle = vehicleNames[Math.floor(Math.random() * vehicleNames.length)];
+
+  await page.locator(Selectors.searchInput).fill(String(randomVehicle))
 
   await page.waitForTimeout(500);
 
-  await expect(page.locator(Selectors.dataCells).nth(0)).toContainText(randomVehicle);
+  await expect(page.locator(Selectors.dataCells).nth(0)).toContainText(String(randomVehicle))
 
   await page.locator(Selectors.addButton).nth(1).click();
 
