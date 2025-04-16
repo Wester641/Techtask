@@ -56,6 +56,8 @@ export const URLs = {
   vendorsPage: "/vendor",
   addParts: "/parts/create",
   partsPage: "/parts",
+  purchaseOrders: "/purchase-orders",
+  addPurchaseOrder: "/purchase-orders/create",
   onboarding_form: "/onboarding-form",
   addServiseHistoryFromUnitPage:
     /service-history\/create\/\?vehicle_id=[a-z0-9-]+/,
