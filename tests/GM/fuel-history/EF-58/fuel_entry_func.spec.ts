@@ -5,6 +5,7 @@ import { URLs } from "../../../../constants/links";
 
 test("EF-58__Fuel Entry Functionality", async ({ page }) => {
   await page.goto(URLs.fuelHistory);
+  await page.setViewportSize(screenSize);
 
   await page.waitForTimeout(3000);
 
