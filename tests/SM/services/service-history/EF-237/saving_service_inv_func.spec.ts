@@ -1,22 +1,17 @@
 import { test, expect } from "@playwright/test";
 import { Selectors } from "./Selectors";
-import { screenSize } from "../../../../../constants/links";
+import { screenSize, URLs } from "../../../../../constants/links";
 
-test("EF-220__ service history functionality", async ({ page, request }) => {
+test("EF-237__Saving service history invoice functionality", async ({
+  page,
+}) => {
   await page.setViewportSize(screenSize);
-  await page.goto("/service-history");
+  await page.goto(URLs.serviceHistory);
 
-  const rows = page.locator(Selectors.table_row);
-  const count = await rows.count();
+  const rows = page.getByRole("cell").nth(5);
 
-  if (count > 0) {
-    const randomIndex = Math.floor(Math.random() * count);
-    const randomRow = rows.nth(randomIndex);
-    await expect(randomRow).toBeVisible();
-    await randomRow.click();
-  } else {
-    console.log("No rows found to click.");
-  }
+  await rows.click();
+
   const [newPage] = await Promise.all([
     page.waitForEvent("popup"),
     page.getByRole("link").nth(4).click(),

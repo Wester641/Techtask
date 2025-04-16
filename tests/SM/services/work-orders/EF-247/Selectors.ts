@@ -1,4 +1,4 @@
-export const Selectors = {
+export const Selectors2 = {
   actions_modal: ".css-r8u8y9",
   icon_button: ".css-1yxmbwk",
   work_order: ".css-1liixou",
@@ -8,7 +8,11 @@ export const Selectors = {
   dateInput: ".css-mnn31",
   addButton: ".IconButton_label_block__Ri\\+VB",
   dataRow: ".css-1liixou",
-  
 };
 
 export const today = new Date();
+
+export const Selectors = {
+  select_value: ".css-19bb58m",
+  nearest_vendors_close: ".css-mrqjss",
+};

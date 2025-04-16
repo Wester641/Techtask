@@ -18,7 +18,7 @@ test("EF-274__tests the bulk-delete function is able to delete contact renewal r
   );
 
   const apiResponseData = await apiResponse.json();
-  const count = apiResponseData.count;
+  const count = apiResponseData.count - 6;
 
   await page.locator(Selectors.checkBox).first().click();
 

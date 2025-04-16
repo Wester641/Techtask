@@ -2,14 +2,15 @@ import { test, expect } from "@playwright/test";
 import { screenSize, URLs } from "../../../../../constants/links";
 import { Selectors } from "./Selectors";
 
-test('EF-251__Verify Switch Tabs between statuses "Upcoming", "Due Soon" and "Overdue"', async ({ page }) => {
-
+test('EF-251__Verify Switch Tabs between statuses "Upcoming", "Due Soon" and "Overdue"', async ({
+  page,
+}) => {
   await page.setViewportSize(screenSize);
 
   await page.goto(URLs.contactRemindersPage);
 
   await page.waitForTimeout(3000);
-  
+
   await page.locator(Selectors.tabButton).nth(0).click();
 
   await page.waitForTimeout(1000);
@@ -17,14 +18,14 @@ test('EF-251__Verify Switch Tabs between statuses "Upcoming", "Due Soon" and "Ov
   const upcomingRows = await page.locator(Selectors.dataRow).all();
 
   if (upcomingRows.length > 0) {
-
     for (const row of upcomingRows) {
-
       const status = await row.locator(Selectors.dataCell).nth(1).textContent();
-  
-      expect(status?.toLowerCase()).toContain('upcoming');
+
+      expect(status?.toLowerCase()).toContain("upcoming");
     }
-  } else { console.log("NO ROWS IN THIS SECTION") }
+  } else {
+    console.log("NO ROWS IN THIS SECTION");
+  }
 
   await page.waitForTimeout(3000);
 
@@ -35,14 +36,14 @@ test('EF-251__Verify Switch Tabs between statuses "Upcoming", "Due Soon" and "Ov
   const dueSoonRows = await page.locator(Selectors.dataRow).all();
 
   if (dueSoonRows.length > 0) {
-
     for (const row of dueSoonRows) {
-
       const status = await row.locator(Selectors.dataCell).nth(1).textContent();
-  
-      expect(status?.toLowerCase()).toContain('due soon');
+
+      expect(status?.toLowerCase()).toContain("due soon");
     }
-  } else { console.log("NO ROWS IN THIS SECTION") }
+  } else {
+    console.log("NO ROWS IN THIS SECTION");
+  }
 
   await page.waitForTimeout(3000);
 
@@ -53,14 +54,14 @@ test('EF-251__Verify Switch Tabs between statuses "Upcoming", "Due Soon" and "Ov
   const overdueRows = await page.locator(Selectors.dataRow).all();
 
   if (overdueRows.length > 0) {
-
     for (const row of overdueRows) {
-
       const status = await row.locator(Selectors.dataCell).nth(1).textContent();
-  
-      expect(status?.toLowerCase()).toContain('overdue');
+
+      expect(status?.toLowerCase()).toContain("overdue");
     }
-  } else { console.log("NO ROWS IN THIS SECTION") }
+  } else {
+    console.log("NO ROWS IN THIS SECTION");
+  }
 
   await page.waitForTimeout(3000);
 });
