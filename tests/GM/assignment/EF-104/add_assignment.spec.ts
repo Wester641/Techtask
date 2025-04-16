@@ -14,7 +14,7 @@ test("EF-104__Verify Add Assignment From Appearance and Fields", async ({
   const apiResponse = await page.waitForResponse((response) => {
     console.log("Checking:", response.url());
     return (
-      response.url().includes("/api/v1/vehicles/?limit=1000") &&
+      response.url().includes("/api/v1/vehicles/?limit=1500") &&
       response.status() === 200
     );
   });
