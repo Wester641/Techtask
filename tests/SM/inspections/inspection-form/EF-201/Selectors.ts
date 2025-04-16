@@ -12,5 +12,5 @@ export const Selectors = {
   inspectionFiel: ".Styles_items__item__7CSaH",
   dataBlock: ".Block_block__U3GqW",
   cellTitle: ".InspectionsFormsList_renderCell__title__te5Zz",
-
+  listOfVehicle: ".css-1wbz3t9",
 };

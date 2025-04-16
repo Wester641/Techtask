@@ -15,4 +15,6 @@ export const Selectors = {
     "div:nth-child(15) > .SelectField_select__nkrpi > .Select_select__input__6V5DK > .react-select__control > .react-select__value-container > .react-select__input-container",
   save_button: "button[type='submit']",
   toast_msg: ".Toastify__toast-body",
+  nearest_vendors_close: ".css-mrqjss",
+  select_value: ".css-19bb58m",
 };

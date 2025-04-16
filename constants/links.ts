@@ -1,6 +1,6 @@
 export const Credentials = {
-  email: "pikoy25780@bitflirt.com",
-  password: "zafarzhon77",
+  email: "shakirowww099@gmail.com",
+  password: "admin2025",
 };
 
 export const loginSelectors = {

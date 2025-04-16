@@ -1,4 +1,4 @@
-export const Selectors = {
+export const Selectors2 = {
   table_row: "tr.MuiTableRow-root.css-1liixou",
   details_text: "'h3', { hasText: 'Details' }",
   icon_btn: ".IconButton_label_block__Ri\\+VB",
@@ -16,4 +16,9 @@ export const Selectors = {
   payment_type: ".react-select__control.css-1ff06q0-control",
   save_button: "button[type='submit']",
   toast_msg: ".Toastify__toast-container.Toastify__toast-container--top-right",
+};
+
+export const Selectors = {
+  select_value: ".css-19bb58m",
+  nearest_vendors_close: ".css-mrqjss",
 };

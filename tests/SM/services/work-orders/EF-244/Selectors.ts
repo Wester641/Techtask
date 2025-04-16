@@ -20,6 +20,6 @@ export const expect_urls = [
     url: "work-orders?status=completed&tab=3",
   },
   {
-    url: "work-orders?tab=0",
+    url: "work-orders?tab=0&status=",
   },
 ];
