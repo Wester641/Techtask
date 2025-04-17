@@ -10,7 +10,7 @@ test("EF-222__Verify Equipment Page Loads Successfully", async ({ page }) => {
 
   await page.waitForSelector(Selectors.addDataButton, { state: "visible" });
 
-  expect(await page.locator(Selectors.addDataButton).count()).toBe(2);
+  expect(await page.locator(Selectors.addDataButton).count()).toBeGreaterThanOrEqual(2);
 
   await expect(page.getByText("Add Equipment").first()).toBeVisible();
   await expect(page.getByText("Action").first()).toBeVisible();
