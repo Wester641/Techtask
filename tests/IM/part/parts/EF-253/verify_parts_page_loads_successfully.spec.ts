@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { screenSize, URLs } from "../../../../../constants/links";
+import { Selectors } from "./Selectors";
 
 test("EF-253__verify_parts_page_loads_successfully", async ({ page }) => {
   await page.setViewportSize(screenSize);
@@ -12,6 +13,6 @@ test("EF-253__verify_parts_page_loads_successfully", async ({ page }) => {
     .filter({ hasText: /^Part$/ })
     .click();
   await page.getByText("Parts").click();
-  await expect(page).toHaveURL("https://app.easyfleet.ai/parts?tab=0");
-  await expect(page.locator(".css-1owb465")).toBeVisible();
+  await expect(page).toHaveURL(URLs.partsPage);
+  await expect(page.locator(Selectors.mainContainer)).toBeVisible();
 });
