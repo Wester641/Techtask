@@ -38,6 +38,7 @@ export const URLs = {
   serviceTaskCreate: "/services/service-task/create",
   serviceTask: "/services/service-task/",
   settings: "/settings/",
+  settingsRoles: "/settings/roles/",
   trainingPage: "/training-videos/",
   workOrders: "/work-orders",
   workOrdersCreate: "/work-orders/add",
