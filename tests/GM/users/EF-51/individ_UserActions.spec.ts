@@ -7,6 +7,8 @@ test("EF-51_Individiual User Actions", async ({ page }) => {
 
   await page.goto(URLs.users);
 
+  await page.getByRole("tab", { name: "All" }).click();
+
   await page.locator(Selectors.threeDotsBtn).nth(1).click();
 
   const menuItem = await page
@@ -56,6 +58,9 @@ test("EF-51_Individiual User Actions", async ({ page }) => {
     }
   );
   await page.goto(URLs.users);
+
+  await page.getByRole("tab", { name: "All" }).click();
+
   // await page.setViewportSize(screenSize);
 
   //Delete User
@@ -72,12 +77,7 @@ test("EF-51_Individiual User Actions", async ({ page }) => {
   // Resend Invitation
   await page.locator(Selectors.threeDotsBtn).nth(1).click();
   await page.locator(Selectors.threeDotsMenuItem).nth(2).click();
-  await expect(page.locator(Selectors.toastMsg).nth(1)).toHaveText(
-    "Successfully resent invitation!",
-    {
-      timeout: 5000,
-    }
-  );
+  await expect(page.getByText("Successfully resent invitation!")).toBeVisible();
   await page.waitForTimeout(2000);
   //Archive
   // await page.locator(Selectors.threeDotsBtn).nth(1).click();

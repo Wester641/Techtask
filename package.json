@@ -6,16 +6,19 @@
   "scripts": {
     "test": "playwright test",
     "test-ui": "playwright test --ui",
-    "limit-workers": "playwright test --workers=1"
+    "limit-workers": "playwright test --workers=1",
+    "test-run-193-case": "npx playwright test --grep 'EF-193__Inspections History Page Navigation'"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.51.1",
+    "@types/dotenv": "^8.2.3",
     "@types/node": "^22.13.5"
   },
   "dependencies": {
+    "dotenv": "^16.5.0",
     "playwright": "^1.51.0"
   }
 }

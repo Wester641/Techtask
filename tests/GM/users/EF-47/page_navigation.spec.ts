@@ -7,29 +7,7 @@ test("EF-47__Users Page Navigation", async ({ page }) => {
 
   await page.goto(URLs.users);
 
-  // Add styling
-  await page.addStyleTag({
-    content: `
-    ${Selectors.usersRows},
-    ${Selectors.usersNumber} {
-      background-color: #7d9ec087 !important; 
-      border: 1px solid #7d9ec087 !important;      
-    }`,
-  });
-
-  await page.waitForTimeout(100);
-
-  // Remove styling
-  await page.addStyleTag({
-    content: `
-    ${Selectors.usersRows},
-    ${Selectors.usersNumber} {
-      background-color: transparent !important;
-      border: none !important;
-    }`,
-  });
-
-  await page.waitForTimeout(100);
+  await page.getByRole("tab", { name: "All" }).click();
 
   await expect(page.locator(Selectors.usersNumber)).toBeVisible();
 
