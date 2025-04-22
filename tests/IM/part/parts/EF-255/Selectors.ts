@@ -6,5 +6,5 @@ export const Selectors = {
 };
 
 export const today = new Date().toDateString();
-export const todayForFill = new Date();
+export const todayForFill = new Date().toLocaleDateString("ru-RU");
 export const time = new Date().toLocaleTimeString();

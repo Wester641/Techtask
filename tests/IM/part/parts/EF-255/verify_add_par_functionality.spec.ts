@@ -1,4 +1,4 @@
-import { test } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 import { screenSize, URLs } from "../../../../../constants/links";
 import { Selectors, time, today, todayForFill } from "./Selectors";
 
@@ -23,7 +23,10 @@ test("EF-255__verify_add_par_functionality", async ({ page }) => {
     await page.locator(Selectors.select_field).nth(i).click();
     await page.getByRole("option").nth(0).click();
   }
-  await page.getByRole("textbox", { name: today }).fill(`${todayForFill}`);
+  await page
+    .getByRole("textbox", { name: "DD.MM.YYYY" })
+    .fill(`${todayForFill}`);
   await page.getByRole("button", { name: "Save" }).click();
   await page.waitForTimeout(5000);
+  await expect(page.locator('[id="\\31 "]')).toBeVisible();
 });
