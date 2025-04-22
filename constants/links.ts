@@ -1,6 +1,6 @@
 export const Credentials = {
-  email: "pikoy25780@bitflirt.com",
-  password: "zafarzhon77",
+  email: "shakirowww099@gmail.com",
+  password: "admin2025",
 };
 
 export const loginSelectors = {
@@ -11,7 +11,7 @@ export const loginSelectors = {
 
 export const screenSize = { width: 1920, height: 1080 };
 export const timeout = { timeout: 10000 };
-const BASE_URL = "https://app.easyfleet.ai";
+export const BASE_URL = "https://app.easyfleet.ai";
 
 export const URLs = {
   login: "/login",
@@ -27,15 +27,21 @@ export const URLs = {
   createUnit: "/create-unit",
   updateUnit: "/units/update/",
   subPage: "/units?page=1&filter=",
+  usersPage: "/users",
   userEditPage: "/users/update/",
-  inspectionForms: "/inspections/forms",
+  inspection_history: "/inspections/history/",
+  inspectionForms: "/inspections/forms/",
+  inspection_forms: "/inspections/forms",
   issueCreatePage: "/issues/add",
   issues: "/issues",
   criticalFaults: "/faults",
   samsaraDevices: "/samsara-devices",
   serviceHistory: "/service-history",
   serviceTaskCreate: "/services/service-task/create",
+  service_task_create: "/services/service-task/create/",
   serviceTask: "/services/service-task/",
+  settings: "/settings/",
+  trainingPage: "/training-videos/",
   workOrders: "/work-orders",
   workOrdersCreate: "/work-orders/add",
   serviceRemindersPage: "/reminders/services",
@@ -50,7 +56,14 @@ export const URLs = {
   vendorsPage: "/vendor",
   addParts: "/parts/create",
   partsPage: "/parts",
+  purchaseOrders: "/purchase-orders",
+  addPurchaseOrder: "/purchase-orders/create",
   onboarding_form: "/onboarding-form",
+  addServiseHistoryFromUnitPage:
+    /service-history\/create\/\?vehicle_id=[a-z0-9-]+/,
+  addIssueFromUnitPage: /issues\/add\/\?vehicle_id=[a-z0-9-]+/,
+  addWorkOrderFromUnitPage: /work-orders\/add\/\?vehicle_id=[a-z0-9-]+/,
+  addMeterHistoryFromUnitPage: /meter-history\/\?vehicle_id=[a-z0-9-]+/,
 
   unitsPage: /\/units\/[0-9a-fA-F-]+$/,
   unitsUpdatePage: /\/units\/update\/[0-9a-fA-F-]+$/,
@@ -78,3 +91,10 @@ export const URLs = {
 // ISSUES_TAB:
 // /https:\/\/app\.easyfleet\.ai\/api\/v1\/vehicles\/[0-9a-fA-F-]+\/issues\//,
 // /https:\/\/app\.easyfleet\.ai\/api\/v1\/vehicles\/[0-9a-fA-F-]+\/$/
+
+export const Styles = {
+  background_color: "#7d9ec087",
+  border: "1px solid #7d9ec087",
+  transparent: "transparent",
+  none: "none",
+};

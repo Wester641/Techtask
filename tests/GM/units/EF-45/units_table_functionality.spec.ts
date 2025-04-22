@@ -1,10 +1,14 @@
 import { test, expect } from "@playwright/test";
 import { Selectors } from "./Selectors";
-import { URLs } from "../../../../constants/links";
+import { URLs, screenSize } from "../../../../constants/links";
 
 test("EF-45__Units Table Functionality", async ({ page }) => {
+  await page.setViewportSize(screenSize);
+  
   await page.goto(URLs.units);
+
   await expect(page.locator(Selectors.searchInput)).toBeVisible();
+  
   await page.waitForTimeout(500);
 
   await page.locator(`${Selectors.firstUnit}`).first().scrollIntoViewIfNeeded();

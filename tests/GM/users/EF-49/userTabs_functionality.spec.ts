@@ -3,8 +3,11 @@ import { Selectors } from "./Selectors";
 import { URLs, screenSize } from "../../../../constants/links";
 
 test("EF-49__User Tabs Functionality", async ({ page }) => {
-  await page.goto(URLs.users);
   await page.setViewportSize(screenSize);
+
+  await page.goto(URLs.users);
+
+  await page.getByRole("tab", { name: "All" }).click();
 
   await page.waitForTimeout(10000);
   // await expect(page.locator(Selectors.searchInput)).toBeVisible();

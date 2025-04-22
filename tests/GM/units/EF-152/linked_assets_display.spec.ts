@@ -1,8 +1,10 @@
 import { test, expect } from "@playwright/test";
 import { Selectors } from "./Selectors";
-import { URLs } from "../../../../constants/links";
+import { URLs, screenSize } from "../../../../constants/links";
 
 test("EF-152_linked_assets_display", async ({ page }) => {
+  await page.setViewportSize(screenSize);
+
   await page.goto(URLs.units);
 
   await page.waitForSelector(Selectors.unitsBlock, {

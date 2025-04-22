@@ -19,6 +19,7 @@ test("EF-111__Verify Filtering by Vehicle Group", async ({ page }) => {
 
   const randomItems = Math.random() * 2;
 
+
   await page.locator(Selectors.listVehicleFilter).nth(randomItems).click();
 
   await page.locator(Selectors.applyVehicleFilter).nth(1).click();
