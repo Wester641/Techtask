@@ -70,7 +70,7 @@ test("EF-221__Edit service history functionality", async ({ page }) => {
   await page.goto(URLs.serviceHistory);
 
   await page.getByRole("cell").nth(7).click();
-  await page.getByText("Edit").click();
+  await page.getByText("Edit", { exact: true }).click();
 
   await page.locator(Selectors.select_value).nth(0).click();
   await page.getByRole("option").nth(randomOption).click();
