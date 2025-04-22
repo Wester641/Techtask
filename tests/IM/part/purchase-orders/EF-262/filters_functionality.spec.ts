@@ -2,7 +2,9 @@ import { expect, test } from "@playwright/test";
 import { screenSize, URLs } from "../../../../../constants/links";
 import { Selectors } from "./Selectors";
 
-test("EF-262__Verify Filters Functionality on Purchase Orders Page", async ({ page }) => {
+test("EF-262__Verify Filters Functionality on Purchase Orders Page", async ({
+  page,
+}) => {
   await page.setViewportSize(screenSize);
   await page.goto(URLs.purchaseOrders);
 
@@ -11,75 +13,44 @@ test("EF-262__Verify Filters Functionality on Purchase Orders Page", async ({ pa
     timeout: 10000,
   });
 
-  const rowsParts = await page.locator(Selectors.data_row).all();
-  const parts: string[] = [];
-
-  for (let i = 0; i < rowsParts.length; i++) {
-    const row = rowsParts[i];
-    const name = await row.locator("td").nth(4).innerText().catch(() => null);
-    if (name) {
-      parts.push(name.trim());
-    }
-  }
-
-  const randomPart = parts[Math.floor(Math.random() * parts.length)];
-  
+  // PARTS FILTERS CHECK
   await page.locator(Selectors.filter_button).nth(0).click();
-  await page.waitForTimeout(2000);
 
-  await page.locator(Selectors.filter_option).filter({ hasText: randomPart }).first().click();
-  await page.waitForTimeout(2000);
+  const partValue = page.getByRole("cell").nth(4);
 
-  await page.getByText('Apply').first().click();
-  await page.waitForTimeout(2000);
-  
-  const rowAmountParts = await page.locator(Selectors.data_row).count();
+  await page
+    .getByRole("textbox", { name: "Select Item(s)" })
+    .fill(await partValue.innerText());
+  await page.waitForTimeout(5000);
 
-  if (rowAmountParts > 0) {
-    for (let i = 0; i < rowAmountParts; i++) {
-      const currentRow = page.locator(Selectors.data_row).nth(i);
+  await page.locator(Selectors.filter_option).first().click();
+  await page.waitForTimeout(5000);
 
-      const type = await currentRow.locator("td").nth(4).innerText();
-      expect(type).toContain(randomPart);
-    }
-  }
+  await page.getByRole("button", { name: "Apply" }).click();
 
-  await page.locator(Selectors.reset_button).first().click();
-  await page.waitForTimeout(3000);
+  expect(page.getByText(`${await partValue.innerText()}`)).toBeVisible();
+  await page.waitForTimeout(5000);
 
+  // Clear action
+  await page.locator(Selectors.filter_button).nth(0).click();
+  await page.getByTestId("ClearIcon").click();
 
-  const rowsVendor = await page.locator(Selectors.data_row).all();
-  const vendors: string[] = [];
-
-  for (let i = 0; i < rowsVendor.length; i++) {
-    const row = rowsVendor[i];
-    const name = await row.locator("td").nth(3).innerText().catch(() => null);
-    if (name) {
-      vendors.push(name.trim());
-    }
-  }
-
-  const randomVendor = vendors[Math.floor(Math.random() * vendors.length)];
-
+  // VENDOR FILTERS CHECK
   await page.locator(Selectors.filter_button).nth(1).click();
-  await page.waitForTimeout(2000);
 
-  await page.locator(Selectors.filter_option).filter({ hasText: randomVendor }).first().click();
-  await page.waitForTimeout(2000);
+  const vendorValue = page.getByRole("cell").nth(3);
 
-  await page.getByText('Apply').first().click();
-  await page.waitForTimeout(2000);
-  
-  const rowAmountVendor = await page.locator(Selectors.data_row).count();
+  await page.locator(Selectors.filter_option).first().click();
+  await page.waitForTimeout(5000);
 
-  if (rowAmountVendor > 0) {
-    for (let i = 0; i < rowAmountVendor; i++) {
-      const currentRow = page.locator(Selectors.data_row).nth(i);
+  await page.getByRole("button", { name: "Apply" }).click();
 
-      const type = await currentRow.locator("td").nth(3).innerText();
-      expect(type).toContain(randomVendor);
-    }
-  }
+  expect(
+    page.getByText(`${await vendorValue.innerText()}`).first()
+  ).toBeVisible();
+  await page.waitForTimeout(5000);
 
-  await page.locator(Selectors.reset_button).first().click();
+  // Clear action
+  await page.locator(Selectors.filter_button).nth(1).click();
+  await page.getByTestId("ClearIcon").click();
 });

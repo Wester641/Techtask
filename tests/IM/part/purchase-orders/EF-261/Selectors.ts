@@ -1,7 +1,7 @@
 export const Selectors = {
   list_of_purchase_orders: ".Table_tableWrapper__ePlzX",
   data_row: ".css-1liixou",
-  search_input: ".SearchFiters_containerSearch__searchBox__UwgF2",
+  search_input: 'input[type="text"]',
 };
 
 export const today = new Date().toDateString();

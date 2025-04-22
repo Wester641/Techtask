@@ -3,7 +3,8 @@ export const Selectors = {
   data_row: ".css-1liixou",
   filter_button: ".ModalOptions_blockFiltering__jpAKN",
   reset_button: ".css-1rs06yn",
-  filter_option: ".ModalOptions_blockFiltering__trueModal__inModal__paddingModal__listItem__\\-6JIk",
+  filter_option:
+    ".ModalOptions_blockFiltering__trueModal__inModal__paddingModal__listItem__-6JIk",
 };
 
 export const today = new Date().toDateString();
