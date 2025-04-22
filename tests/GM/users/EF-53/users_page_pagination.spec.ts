@@ -7,6 +7,8 @@ test("EF-53__Users Page Pagination", async ({ page }) => {
 
   await page.goto(URLs.users);
 
+  await page.getByRole("tab", { name: "All" }).click();
+
   await page.locator(Selectors.perPageDrdown).scrollIntoViewIfNeeded();
   await page.locator(Selectors.perPageDrdown).click();
   const totalOptions = 3;
@@ -20,6 +22,7 @@ test("EF-53__Users Page Pagination", async ({ page }) => {
   await page.locator(Selectors.perPageValue).nth(0).click();
   await page.locator(Selectors.rightArrowBtn).last().click();
   await page.locator(Selectors.rightArrowBtn).first().click();
+
 
   const rowCount = await page
     .locator(Selectors.usersTableRow)

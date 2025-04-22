@@ -1,4 +1,6 @@
 export const Selectors = {
+    dataRow: ".css-1liixou",
+    dataCell: ".css-q34dxg",
     searchField: ".SearchFiters_containerSearch__searchBox__UwgF2",
     vehicleFilter: ".ModalOptions_blockFiltering__jpAKN",
     searchVehicleField: 'input[placeholder="Select Item(s)"]',

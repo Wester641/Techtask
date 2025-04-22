@@ -13,7 +13,9 @@ import { URLs, screenSize } from "../../../../constants/links";
 test("EF-46__Add Unit Functionality", async ({ page }) => {
   await page.setViewportSize(screenSize);
   
-  await page.goto(URLs.createUnit);
+  await page.goto(URLs.unitCreate);
+
+  await page.waitForTimeout(3000);
 
   await page
     .locator(Selectors.input)
@@ -36,7 +38,7 @@ test("EF-46__Add Unit Functionality", async ({ page }) => {
       .waitFor({ state: "visible" });
     await page
       .locator(Selectors.selectOption)
-      .nth(Math.floor(Math.random() * 4))
+      .nth(Math.floor(Math.random() * 3))
       .click();
 
     await page.waitForTimeout(500);

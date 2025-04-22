@@ -1,5 +1,6 @@
 export const Selectors = {
     searchInput: ".SearchFiters_containerSearch__searchBox__UwgF2",
+    dataRow: ".css-1liixou",
     dataCells: ".css-q34dxg",
     addButton: ".css-1yxmbwk",
     addMenu: ".css-1ty026z",
