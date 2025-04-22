@@ -7,13 +7,17 @@ test("EF-111__Verify Filtering by Vehicle Group", async ({ page }) => {
 
   await page.goto(URLs.samsaraDevices);
 
-  await page.locator(Selectors.widgetsFilter).nth(2).click();
+  await page
+    .locator("div")
+    .filter({ hasText: /^Vehicle Group$/ })
+    .nth(1)
+    .click();
 
   await page.waitForSelector(Selectors.listVehicleFilter);
 
   const items = await page.locator(Selectors.listVehicleFilter).all();
 
-  const randomItems = Math.random() * 5;
+  const randomItems = Math.random() * 2;
 
   await page.locator(Selectors.listVehicleFilter).nth(randomItems).click();
 
