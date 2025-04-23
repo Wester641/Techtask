@@ -26,7 +26,7 @@ test("EF-204__Archive Forms Functionality", async ({ page }) => {
 
   expect(settingsButtonCount).toBeGreaterThan(0);
 
-  await page.locator(Selectors.settingsButton).nth(2).click();
+  await page.locator(Selectors.settingsButton).nth(5).click();
 
   await page.waitForTimeout(3000);
 
