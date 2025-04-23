@@ -15,13 +15,14 @@ test("EF-201__Add Form Functionality", async ({ page }) => {
     .innerText();
   console.log(`Cell 2 text before: ${currentCellBefore}`);
 
-  await page.locator(Selectors.settingsButton).nth(1).click();
+  // await page.locator(Selectors.settingsButton).nth(1).click();
 
-  // await page.getByText("Add Inspection Form").click();
+  await page.getByText("Add Inspection Form", { exact: true }).click();
 
   await page.waitForTimeout(1000);
 
   const randomNum = Math.floor(Math.random() * 100000);
+
   const expectedText = `Test Form number: ${randomNum}`;
 
   await page
