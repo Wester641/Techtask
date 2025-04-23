@@ -9,34 +9,13 @@ test("EF-206__Editing only 'Title and Setting' form, function", async ({
 
   await page.goto(URLs.inspectionForms);
 
-  await page.waitForTimeout(500);
-
-  await page.addStyleTag({
-    content: `
-      ${Selectors.headerTable} {
-        background-color: #7d9ec087 !important; 
-        border: 1px solid #7d9ec087 !important;      
-      }`,
-  });
-
-  await page.waitForTimeout(500);
-
-  // Remove styling
-  await page.addStyleTag({
-    content: `
-      ${Selectors.headerTable} {
-        background-color: transparent !important;
-        border: none !important;
-      }`,
-  });
-
   await page.waitForTimeout(3000);
 
   await expect(page.locator(Selectors.headerTable).first()).toBeVisible();
 
-  await page.locator(Selectors.settingsButton).nth(2).click();
+  await page.locator(Selectors.settingsButton).nth(5).click();
 
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(1000);
 
   const settingsNames = await page
     .locator(Selectors.settingsDropdown)
@@ -47,11 +26,11 @@ test("EF-206__Editing only 'Title and Setting' form, function", async ({
     "Inspecton Items\nTitle and Setting\nDelete\nArchive",
   ]);
 
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(1000);
 
   await page.getByRole("menuitem", { name: "Title and Setting" }).click();
 
-  await page.waitForTimeout(2000);
+  await page.waitForTimeout(1000);
 
   const randomNum = Math.floor(Math.random() * 100);
   const expectedText = `Edited Test Form number: ${randomNum}`;
@@ -76,7 +55,7 @@ test("EF-206__Editing only 'Title and Setting' form, function", async ({
 
   await page.getByText("Save").click();
 
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(5000);
 
   await expect(
     page
@@ -100,7 +79,7 @@ test("EF-206__Editing only 'Title and Setting' form, function", async ({
     }
     if (found) break;
     await page.getByRole("button", { name: "Go to next page" }).click();
-    await page.waitForTimeout(3000);
+    await page.waitForTimeout(5000);
   }
 
   // expect(found).toBe(true);
