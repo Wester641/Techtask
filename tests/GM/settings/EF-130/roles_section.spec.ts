@@ -2,9 +2,11 @@ import { test, expect } from "@playwright/test";
 import { Selectors } from "./Selectors";
 import { URLs, screenSize } from "../../../../constants/links";
 
-test.describe.serial("EF-130__Roles Section", () => {
+test("EF-130__Roles Section", async ({ page }) => {
 
-  const num = Math.floor(Math.random() * 1000);
+  await page.setViewportSize(screenSize);
+
+  await page.goto(URLs.settings);
 
   await page.waitForTimeout(3000);
 
