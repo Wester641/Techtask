@@ -13,7 +13,9 @@ test("EF-122__Verify Search Functionality", async ({ page }) => {
   const cell = page.locator("role=cell").first();
   const cell_text = await cell.textContent();
 
-  await page.locator(Selectors.search_input).fill(cell_text || "paper");
+  const shortText = cell_text ? cell_text.slice(0, 15) : "";
+
+  await page.locator(Selectors.search_input).fill(shortText || "paper");
 
   await expect(cell).toContainText(cell_text || "paper");
 });
