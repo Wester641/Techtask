@@ -9,6 +9,8 @@ test("EF-128__Verify Table Row Interaction on 'Papers' Page", async ({
   await page.setViewportSize(screenSize);
   await page.goto("/papers");
 
+  await page.waitForTimeout(3000);
+
   await page.locator(Selectors.click_first_cell).click();
 
   await page.waitForTimeout(2000);
