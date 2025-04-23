@@ -16,7 +16,7 @@ test("EF-216__Edit issue functionality", async ({ page }) => {
     i++;
   }
 
-  await page.getByRole("button").nth(2).click();
+  await page.getByRole("button").filter({ hasText: /^$/ }).nth(3).click();
   expect(page.locator(Selectors.edit_form)).toBeVisible();
 
   let j = 0;
@@ -34,6 +34,8 @@ test("EF-216__Edit issue functionality", async ({ page }) => {
     .locator(Selectors.description_field)
     .nth(0)
     .fill(`Edited description ${today} at ${time}`);
+
+  await page.getByRole("button", { name: "Save" }).scrollIntoViewIfNeeded();
 
   await page.getByRole("button", { name: "Save" }).click();
 
