@@ -7,6 +7,8 @@ test("EF-124__Verify 'Vehicle' Dropdown Functionality", async ({ page }) => {
 
   await page.goto(URLs.papers);
 
+  await page.waitForTimeout(3000);
+  
   await page.locator(Selectors.filter_widget).first().click();
 
   expect(page.locator(Selectors.modal_filter)).toBeVisible();
