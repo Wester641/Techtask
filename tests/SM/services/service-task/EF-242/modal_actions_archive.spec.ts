@@ -24,10 +24,7 @@ test("EF-242__Test functionality of the archiving service template and unarchive
   await page.getByRole("cell").nth(0).click();
   // expect(page.locator(Selectors.actions_modal).nth(1)).toBeVisible();
 
-  await page
-    .locator(".DetailInfo_detail__header__icons__FORVB svg.css-mrqjss")
-    .nth(1)
-    .click();
+  await page.locator(Selectors.middleHeaderIcon).nth(1).click();
 
   expect(page.getByText("Task successfully unarchived!")).toBeVisible();
   await page.getByRole("tab", { name: "Active" }).click();
