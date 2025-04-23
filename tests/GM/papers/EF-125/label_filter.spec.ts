@@ -7,6 +7,8 @@ test("EF-125__Verify Search Functionality", async ({ page }) => {
 
   await page.goto(URLs.papers);
 
+  await page.waitForTimeout(3000);
+
   await page.locator(Selectors.filter_widget).nth(1).click();
 
   expect(page.locator(Selectors.modal_filter)).toBeVisible();

@@ -9,6 +9,8 @@ test("EF-126__Verify Table Row Interaction on 'Papers' Page", async ({
 
   await page.goto(URLs.papers);
 
+  await page.waitForTimeout(3000);
+
   await page.getByRole("cell").first().click();
   expect(page.locator(Selectors.detail_information_widget)).toBeVisible();
 
