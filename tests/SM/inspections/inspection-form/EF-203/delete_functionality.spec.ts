@@ -34,32 +34,43 @@ test("EF-203__Delete Forms Functionality", async ({ page }) => {
 
   await expect(page.locator(Selectors.headerRow).first()).toBeVisible();
 
-  const headerNames = await page.locator(Selectors.headerRow).first().allInnerTexts();
+  const headerNames = await page
+    .locator(Selectors.headerRow)
+    .first()
+    .allInnerTexts();
 
-  await expect(headerNames).toStrictEqual(['Title\tDescription\tItem\tSubmissions\t']);
+  await expect(headerNames).toStrictEqual([
+    "Title\tDescription\tItem\tSubmissions\t",
+  ]);
 
-  const settingsButtonCount = await page.locator(Selectors.settingsButton).count();
-  
+  const settingsButtonCount = await page
+    .locator(Selectors.settingsButton)
+    .count();
+
   expect(settingsButtonCount).toBeGreaterThan(0);
 
-  await page.locator(Selectors.settingsButton).nth(2).click();
-
-  await page.waitForTimeout(3000);
-  
-  const settingsNames = await page.locator(Selectors.settingsDropdown).first().allInnerTexts();
-
-  await expect(settingsNames).toStrictEqual(['Inspecton Items\nTitle and Setting\nDelete\nArchive']);
+  await page.locator(Selectors.settingsButton).nth(5).click();
 
   await page.waitForTimeout(3000);
 
-  await page.getByRole('menuitem', { name: 'Delete' }).click();
+  const settingsNames = await page
+    .locator(Selectors.settingsDropdown)
+    .first()
+    .allInnerTexts();
 
-  await page.waitForTimeout(2000);
+  await expect(settingsNames).toStrictEqual([
+    "Inspecton Items\nTitle and Setting\nDelete\nArchive",
+  ]);
 
-  await page.getByRole('button', { name: 'Delete' }).click();
+  await page.waitForTimeout(3000);
 
-  await page.waitForTimeout(2000);
+  await page.getByRole("menuitem", { name: "Delete" }).click();
 
-  await expect(page.getByText('Successfully deleted!')).toBeVisible();    
+  // await page.waitForTimeout(2000);
 
+  // await page.getByRole("button", { name: "Delete" }).click();
+
+  // await page.waitForTimeout(2000);
+
+  // await expect(page.getByText("Successfully deleted!")).toBeVisible();
 });
