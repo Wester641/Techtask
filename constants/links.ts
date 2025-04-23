@@ -8,6 +8,7 @@ export const URLs = {
   dashboard: "/dashboard",
   units: "/units",
   unitsFirstPage: "/units?page=1",
+  unitCreate: "/units/create",
   users: "/users",
   fuelHistory: "/fuel-history",
   createFuelHistory: "/fuel-history/create",
