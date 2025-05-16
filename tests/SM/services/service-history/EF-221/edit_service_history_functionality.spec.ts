@@ -74,10 +74,15 @@ test("EF-221__Edit service history functionality", async ({ page }) => {
 
   await page.locator(Selectors.select_value).nth(0).click();
   await page.getByRole("option").nth(randomOption).click();
-  await page.locator(Selectors.nearest_vendors_close).first().click();
+  await page
+    .locator("div")
+    .filter({ hasText: /^Nearest vendors$/ })
+    .locator("div")
+    .click();
 
   for (let i = 1; i < 5; i++) {
     await page.locator(Selectors.select_value).nth(i).click();
+    await page.waitForTimeout(300);
     await page.getByRole("option").nth(randomOption).click();
   }
 

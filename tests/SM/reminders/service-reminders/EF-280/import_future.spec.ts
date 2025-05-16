@@ -10,7 +10,7 @@ test("EF-280__verify that the import future is work correct", async ({
 
   await page.waitForTimeout(3000);
 
-  await page.locator(Selectors.settingsButton).first().click();
+  await page.locator(Selectors.settingsButton).nth(1).click();
 
   await page.waitForTimeout(500);
 

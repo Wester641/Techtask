@@ -2,15 +2,16 @@ import { test, expect } from "@playwright/test";
 import { screenSize, URLs } from "../../../../../constants/links";
 import { Selectors } from "./Selectors";
 
-test("EF-266__Verify that the import future is work correct", async ({ page }) => {
-
+test("EF-266__Verify that the import future is work correct", async ({
+  page,
+}) => {
   await page.setViewportSize(screenSize);
 
   await page.goto(URLs.contactRemindersPage);
 
   await page.waitForTimeout(3000);
 
-  await page.locator(Selectors.settingsButton).first().click();
+  await page.locator(Selectors.settingsButton).nth(1).click();
 
   await page.waitForTimeout(500);
 
@@ -18,7 +19,11 @@ test("EF-266__Verify that the import future is work correct", async ({ page }) =
 
   await page.waitForTimeout(2000);
 
-  expect(page.url()).toBe("https://app.easyfleet.ai/import-files/?link=contact_renewals");
+  expect(page.url()).toBe(
+    "https://app.easyfleet.ai/import-files/?link=contact_renewals"
+  );
 
-  expect(await page.locator(Selectors.importTypeField).first().innerText()).toBe("Contact Renewal");
+  expect(
+    await page.locator(Selectors.importTypeField).first().innerText()
+  ).toBe("Contact Renewal");
 });

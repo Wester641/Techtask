@@ -2,8 +2,9 @@ import { test, expect } from "@playwright/test";
 import { screenSize, URLs } from "../../../../../constants/links";
 import { Selectors } from "./Selectors";
 
-test("EF-250__Editing 'Contact Renewal Reminder' Functionality", async ({ page }) => {
-
+test("EF-250__Editing 'Contact Renewal Reminder' Functionality", async ({
+  page,
+}) => {
   await page.setViewportSize(screenSize);
 
   await page.goto(URLs.contactRemindersPage);
@@ -16,17 +17,18 @@ test("EF-250__Editing 'Contact Renewal Reminder' Functionality", async ({ page }
 
   await expect(page.locator(Selectors.detailsModal).first()).toBeVisible();
 
-  await page.locator(Selectors.settingsButton).nth(5).click();
+  await page.locator(Selectors.settingsButton).click();
 
   await page.waitForTimeout(2000);
 
-  await page.locator(Selectors.selectButton).nth(0).click();
+  await page.locator(Selectors.selectButton).nth(0).click(); // FIX
 
   await page.waitForTimeout(2000);
 
   const allContacts = await page.getByRole("option").all();
 
-  const randomContact = allContacts[Math.floor(Math.random() * allContacts.length)];
+  const randomContact =
+    allContacts[Math.floor(Math.random() * allContacts.length)];
 
   const randomContactText = await randomContact.innerText();
 
@@ -34,15 +36,18 @@ test("EF-250__Editing 'Contact Renewal Reminder' Functionality", async ({ page }
 
   await page.waitForTimeout(2000);
 
-  const randomNum = Math.floor(Math.random() * 100)
+  const randomNum = Math.floor(Math.random() * 100);
 
   for (let i = 0; i < 2; i++) {
-    await page.locator(".react-select__input").nth(1).fill(`Test: ${randomNum}`);
+    await page
+      .locator(".react-select__input")
+      .nth(1)
+      .fill(`Test: ${randomNum}`);
 
     await page.waitForTimeout(2000);
-  
-    await page.getByRole('option').first().click();
-  
+
+    await page.getByRole("option").first().click();
+
     await page.waitForTimeout(2000);
   }
 
@@ -52,7 +57,8 @@ test("EF-250__Editing 'Contact Renewal Reminder' Functionality", async ({ page }
 
   const allThresholds = await page.getByRole("option").all();
 
-  const randomThreshold = allThresholds[Math.floor(Math.random() * allThresholds.length)];
+  const randomThreshold =
+    allThresholds[Math.floor(Math.random() * allThresholds.length)];
 
   await randomThreshold.click();
 
@@ -60,7 +66,9 @@ test("EF-250__Editing 'Contact Renewal Reminder' Functionality", async ({ page }
 
   await page.locator(Selectors.numberField).nth(1).fill(`${randomNum}`);
 
-  await page.locator('textarea[name="description"]').fill(`Description test: ${randomNum}`);
+  await page
+    .locator('textarea[name="description"]')
+    .fill(`Description test: ${randomNum}`);
 
   await page.getByText("Save").first().click();
 
@@ -69,5 +77,4 @@ test("EF-250__Editing 'Contact Renewal Reminder' Functionality", async ({ page }
   expect(page.getByText(randomContactText).first()).toBeVisible();
 
   // Add better check system !!!
-
 });

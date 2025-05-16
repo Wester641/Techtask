@@ -10,7 +10,12 @@ test("EF-245__Work order status change functionality", async ({ page }) => {
 
   await page.locator(Selectors.work_order).nth(random).click();
 
-  await page.getByRole("button", { name: "more" }).nth(0).click();
+  await page
+    .locator("button")
+    .filter({ hasText: /Completed|Pending|In progress/ })
+    .click();
+
+  await page.waitForTimeout(1000);
   await expect(page.locator(Selectors.actions_modal)).toBeVisible();
 
   const statusPending = page.getByText("StatusPending");
