@@ -10,14 +10,10 @@ test("EF-60__fuel_summary_functionality", async ({ page }) => {
     .locator("div")
     .filter({ hasText: /^Reports$/ })
     .click();
-  await page
-    .locator("div")
-    .filter({ hasText: /^Fuel$/ })
-    .first()
-    .click();
+  await page.getByRole("heading", { name: "Fuel", exact: true }).click();
   await page.getByText(Selectors.fuel_summary).click();
 
-  await page.locator(Selectors.search_fields).fill("LOVES #114");
-
-  await page.waitForTimeout(5000);
+  await expect(page).toHaveURL(
+    "https://app.easyfleet.ai/reports/fuel/fuel-summary-by-location/"
+  );
 });
