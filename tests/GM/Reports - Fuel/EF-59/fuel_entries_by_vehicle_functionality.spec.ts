@@ -10,7 +10,6 @@ test("EF-59__fuel_entries_by_vehicle_functionality", async ({ page }) => {
     .locator("div")
     .filter({ hasText: /^Reports$/ })
     .click();
-  // await page.getByText("Fuel3").click();
   await page
     .locator("div")
     .filter({ hasText: /^Fuel$/ })
@@ -18,13 +17,14 @@ test("EF-59__fuel_entries_by_vehicle_functionality", async ({ page }) => {
     .click();
   await page.getByText(Selectors.fuel_entries).click();
 
-  // Check if a widget with the specified column headers exists
-
   for (const header of Selectors.columnHeaders) {
     await expect(
       page.getByRole("columnheader", { name: header })
     ).toBeVisible();
   }
-  // Enter a vehicle name in the search field
-  await page.locator(Selectors.search_fields).fill("Vehicle 14");
+
+  const firstCell = await page.getByRole("cell").nth(9).textContent();
+
+  await page.locator(Selectors.search_fields).fill(firstCell || "Vehicle");
+  await page.waitForTimeout(5000);
 });

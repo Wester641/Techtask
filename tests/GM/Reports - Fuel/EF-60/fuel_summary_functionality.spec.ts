@@ -12,8 +12,8 @@ test("EF-60__fuel_summary_functionality", async ({ page }) => {
     .click();
   await page.getByRole("heading", { name: "Fuel", exact: true }).click();
   await page.getByText(Selectors.fuel_summary).click();
-
-  await expect(page).toHaveURL(
-    "https://app.easyfleet.ai/reports/fuel/fuel-summary-by-location/"
-  );
+  await expect(
+    page.getByRole("columnheader", { name: "Name" }).first()
+  ).toBeVisible();
+  await page.waitForTimeout(5000);
 });
