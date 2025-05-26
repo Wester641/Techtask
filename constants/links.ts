@@ -1,6 +1,10 @@
-export const Credentials = {
+export const prodCredentials = {
   email: "shakirowww099@gmail.com",
   password: "admin2025",
+};
+export const devCredentials = {
+  email: "zafarzhon77@gmail.com",
+  password: "zafarzhon77",
 };
 
 export const loginSelectors = {
@@ -11,7 +15,7 @@ export const loginSelectors = {
 
 export const screenSize = { width: 1920, height: 1080 };
 export const timeout = { timeout: 10000 };
-export const BASE_URL = "https://app.easyfleet.ai";
+export const BASE_URL = "https://dev-app.easyfleet.ai"; // After changing BASE_URL in playwright.config.ts and here go to the login.setup.ts and change the url.pathname
 
 export const URLs = {
   login: "/login",

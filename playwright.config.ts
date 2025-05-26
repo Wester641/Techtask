@@ -41,7 +41,7 @@ export default defineConfig({
     screenshot: "on",
     video: "on",
     trace: "on",
-    baseURL: "https://app.easyfleet.ai",
+    baseURL: "https://dev-app.easyfleet.ai", // Go to the links.ts and change the BASE_URL to the production enviroment
   },
 
   /* Configure projects for major browsers */
